@@ -1,0 +1,8 @@
+Owlready2==0.23
+pytest==5.3.5
+pytest-cov==2.5.1
+mock==2.0.0
+simpy==3.0.12
+requests==2.23.0
+rdflib==5.0.0
+Flask==1.1.2
