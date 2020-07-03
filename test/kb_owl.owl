@@ -112,6 +112,9 @@
         <Class IRI="#Executable"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Factory"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#FactoryManager"/>
     </Declaration>
     <Declaration>
@@ -145,6 +148,9 @@
         <Class IRI="#Inventory"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#InventoryManager"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Link"/>
     </Declaration>
     <Declaration>
@@ -164,6 +170,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="#ParkingLot"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ParkingLotManager"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Part"/>
@@ -250,13 +259,10 @@
         <ObjectProperty IRI="#canViewIn"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#createsBeltDrive"/>
+        <ObjectProperty IRI="#createsAssembly"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#createsDayCameraRig"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#createsGripperArm"/>
+        <ObjectProperty IRI="#createsBot"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#definedBy"/>
@@ -265,13 +271,16 @@
         <ObjectProperty IRI="#diagnosesHealthOf"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#executes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#fetchesParts"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#hasAssembly"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#hasBehavior"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#hasBehaviour"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#hasBot"/>
@@ -349,6 +358,9 @@
         <DataProperty IRI="#__query__"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="#done"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="#good"/>
     </Declaration>
     <Declaration>
@@ -397,9 +409,6 @@
         <NamedIndividual IRI="#GrippingExcavation"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#InventoryManager"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#Map"/>
     </Declaration>
     <Declaration>
@@ -410,9 +419,6 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#NightVision"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#ParkingLotManager"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#RockerBogieTransportation"/>
@@ -433,6 +439,9 @@
         <NamedIndividual IRI="#addToInventory"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#addToParkingLot"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#assignExecutable"/>
     </Declaration>
     <Declaration>
@@ -442,7 +451,13 @@
         <NamedIndividual IRI="#belt2"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#createBeltDrive"/>
+        <NamedIndividual IRI="#camera1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#createAssembly"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#createBot"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#createDayCameraRig"/>
@@ -454,13 +469,28 @@
         <NamedIndividual IRI="#execute"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#factory"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#factoryManager"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#fetchAssemblies"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#fetchParts"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#inventory"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#inventoryManager"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#mission_create_bd_bot_day"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#mission_waste_some_time"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#motor1"/>
@@ -469,7 +499,16 @@
         <NamedIndividual IRI="#motor2"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#motor3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#motor4"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#parkingLot"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#parkingLotManager"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#perform"/>
@@ -490,6 +529,15 @@
         <NamedIndividual IRI="#simulator"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#task_add_bd_bot_to_parking_lot"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#task_add_belt_drive_to_inventory"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#task_add_day_camera_to_inventory"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#task_build_assembly_belt_drive"/>
     </Declaration>
     <Declaration>
@@ -497,6 +545,15 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#task_build_bd_bot_day"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#task_provide_bd_bot_assemblies"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#task_provide_belt_drive_parts"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#task_provide_day_camera_parts"/>
     </Declaration>
     <Declaration>
         <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
@@ -533,9 +590,6 @@
     </Declaration>
     <Declaration>
         <AnnotationProperty IRI="#simulation"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#executes"/>
     </Declaration>
     <EquivalentClasses>
         <Class IRI="#Action"/>
@@ -612,10 +666,6 @@
         <Class IRI="#BeltDrive"/>
         <ObjectIntersectionOf>
             <Class IRI="#Drive"/>
-            <ObjectHasValue>
-                <ObjectProperty IRI="#hasSkill"/>
-                <NamedIndividual IRI="#BeltDriveTransportation"/>
-            </ObjectHasValue>
             <ObjectExactCardinality cardinality="2">
                 <ObjectProperty IRI="#hasPart"/>
                 <Class IRI="#Belt"/>
@@ -627,17 +677,24 @@
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
+        <Class IRI="#BeltDrive"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#hasSkill"/>
+            <NamedIndividual IRI="#BeltDriveTransportation"/>
+        </ObjectHasValue>
+    </EquivalentClasses>
+    <EquivalentClasses>
         <Class IRI="#DayCameraRig"/>
         <ObjectIntersectionOf>
             <Class IRI="#VisionRig"/>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasPart"/>
-                <Class IRI="#Camera"/>
-            </ObjectSomeValuesFrom>
             <ObjectHasValue>
                 <ObjectProperty IRI="#hasSkill"/>
                 <NamedIndividual IRI="#DayVision"/>
             </ObjectHasValue>
+            <ObjectExactCardinality cardinality="1">
+                <ObjectProperty IRI="#hasPart"/>
+                <Class IRI="#Camera"/>
+            </ObjectExactCardinality>
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
@@ -750,16 +807,12 @@
         <Class IRI="#FactoryManager"/>
         <ObjectIntersectionOf>
             <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#createsBeltDrive"/>
-                <Class IRI="#BeltDrive"/>
+                <ObjectProperty IRI="#createsAssembly"/>
+                <Class IRI="#Assembly"/>
             </ObjectSomeValuesFrom>
             <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#createsDayCameraRig"/>
-                <Class IRI="#DayCameraRig"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#createsGripperArm"/>
-                <Class IRI="#GripperArm"/>
+                <ObjectProperty IRI="#createsBot"/>
+                <Class IRI="#Bot"/>
             </ObjectSomeValuesFrom>
         </ObjectIntersectionOf>
     </EquivalentClasses>
@@ -883,21 +936,17 @@
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
-        <Class IRI="#Manager"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#diagnosesHealthOf"/>
-            <Class IRI="#Bot"/>
-        </ObjectSomeValuesFrom>
+        <Class IRI="#InventoryManager"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#inventoryManager"/>
+        </ObjectOneOf>
     </EquivalentClasses>
     <EquivalentClasses>
-        <Class IRI="#Mission"/>
-        <ObjectIntersectionOf>
-            <Class IRI="#Executable"/>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasTask"/>
-                <Class IRI="#Task"/>
-            </ObjectSomeValuesFrom>
-        </ObjectIntersectionOf>
+        <Class IRI="#InventoryManager"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#fetchesParts"/>
+            <Class IRI="#Part"/>
+        </ObjectSomeValuesFrom>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#NightCameraRig"/>
@@ -912,6 +961,13 @@
                 <NamedIndividual IRI="#NightVision"/>
             </ObjectHasValue>
         </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ParkingLotManager"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#diagnosesHealthOf"/>
+            <Class IRI="#Bot"/>
+        </ObjectSomeValuesFrom>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#RockerBogie"/>
@@ -1272,6 +1328,10 @@
         <Class IRI="#DomainThings"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Factory"/>
+        <Class IRI="#Containable"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#FactoryManager"/>
         <Class IRI="#Manager"/>
     </SubClassOf>
@@ -1346,6 +1406,10 @@
         <Class IRI="#Containable"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#InventoryManager"/>
+        <Class IRI="#Manager"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Link"/>
         <Class IRI="#Part"/>
     </SubClassOf>
@@ -1372,6 +1436,10 @@
     <SubClassOf>
         <Class IRI="#ParkingLot"/>
         <Class IRI="#Containable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ParkingLotManager"/>
+        <Class IRI="#Manager"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Part"/>
@@ -1709,12 +1777,13 @@
         <Class IRI="#DriverBotNight"/>
     </DisjointClasses>
     <DisjointClasses>
-        <Class IRI="#FinBotDay"/>
-        <Class IRI="#FinBotNight"/>
-    </DisjointClasses>
-    <DisjointClasses>
+        <Class IRI="#Factory"/>
         <Class IRI="#Inventory"/>
         <Class IRI="#ParkingLot"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#FinBotDay"/>
+        <Class IRI="#FinBotNight"/>
     </DisjointClasses>
     <DisjointClasses>
         <Class IRI="#Mission"/>
@@ -1908,10 +1977,6 @@
         <NamedIndividual IRI="#GrippingExcavation"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#Manager"/>
-        <NamedIndividual IRI="#InventoryManager"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="#Action"/>
         <NamedIndividual IRI="#Map"/>
     </ClassAssertion>
@@ -1995,10 +2060,6 @@
         <NamedIndividual IRI="#NightVision"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#Manager"/>
-        <NamedIndividual IRI="#ParkingLotManager"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="#Transportation"/>
         <NamedIndividual IRI="#RockerBogieTransportation"/>
     </ClassAssertion>
@@ -2066,6 +2127,10 @@
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Behavior"/>
+        <NamedIndividual IRI="#addToParkingLot"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Behavior"/>
         <NamedIndividual IRI="#assignExecutable"/>
     </ClassAssertion>
     <ClassAssertion>
@@ -2077,8 +2142,16 @@
         <NamedIndividual IRI="#belt2"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#Camera"/>
+        <NamedIndividual IRI="#camera1"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class IRI="#Behavior"/>
-        <NamedIndividual IRI="#createBeltDrive"/>
+        <NamedIndividual IRI="#createAssembly"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Behavior"/>
+        <NamedIndividual IRI="#createBot"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Behavior"/>
@@ -2093,16 +2166,36 @@
         <NamedIndividual IRI="#execute"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#Manager"/>
+        <Class IRI="#Factory"/>
+        <NamedIndividual IRI="#factory"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FactoryManager"/>
         <NamedIndividual IRI="#factoryManager"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Behavior"/>
+        <NamedIndividual IRI="#fetchAssemblies"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Behavior"/>
+        <NamedIndividual IRI="#fetchParts"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Inventory"/>
         <NamedIndividual IRI="#inventory"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#InventoryManager"/>
+        <NamedIndividual IRI="#inventoryManager"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class IRI="#Mission"/>
         <NamedIndividual IRI="#mission_create_bd_bot_day"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Mission"/>
+        <NamedIndividual IRI="#mission_waste_some_time"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Motor"/>
@@ -2113,8 +2206,20 @@
         <NamedIndividual IRI="#motor2"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#Motor"/>
+        <NamedIndividual IRI="#motor3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Motor"/>
+        <NamedIndividual IRI="#motor4"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class IRI="#ParkingLot"/>
         <NamedIndividual IRI="#parkingLot"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ParkingLotManager"/>
+        <NamedIndividual IRI="#parkingLotManager"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Behavior"/>
@@ -2139,6 +2244,22 @@
     <ClassAssertion>
         <Class IRI="#Simulator"/>
         <NamedIndividual IRI="#simulator"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Task"/>
+        <NamedIndividual IRI="#task_add_bd_bot_to_parking_lot"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Task"/>
+        <NamedIndividual IRI="#task_add_belt_drive_to_inventory"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Task"/>
+        <NamedIndividual IRI="#task_provide_bd_bot_assemblies"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Task"/>
+        <NamedIndividual IRI="#task_provide_belt_drive_parts"/>
     </ClassAssertion>
     <DifferentIndividuals>
         <NamedIndividual IRI="#Day"/>
@@ -2196,11 +2317,6 @@
         <NamedIndividual IRI="#FlatTerrain"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#manages"/>
-        <NamedIndividual IRI="#InventoryManager"/>
-        <NamedIndividual IRI="#inventory"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#requires"/>
         <NamedIndividual IRI="#Map"/>
         <NamedIndividual IRI="#BeltDriveTransportation"/>
@@ -2213,12 +2329,12 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#supervises"/>
         <NamedIndividual IRI="#MotherShip"/>
-        <NamedIndividual IRI="#InventoryManager"/>
+        <NamedIndividual IRI="#inventoryManager"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#supervises"/>
         <NamedIndividual IRI="#MotherShip"/>
-        <NamedIndividual IRI="#ParkingLotManager"/>
+        <NamedIndividual IRI="#parkingLotManager"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#viewedBy"/>
@@ -2229,11 +2345,6 @@
         <ObjectProperty IRI="#canViewIn"/>
         <NamedIndividual IRI="#NightVision"/>
         <NamedIndividual IRI="#Night"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#manages"/>
-        <NamedIndividual IRI="#ParkingLotManager"/>
-        <NamedIndividual IRI="#parkingLot"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#actsOn"/>
@@ -2266,9 +2377,29 @@
         <NamedIndividual IRI="#execute"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#partOf"/>
+        <NamedIndividual IRI="#belt1"/>
+        <NamedIndividual IRI="#inventory"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#partOf"/>
+        <NamedIndividual IRI="#belt2"/>
+        <NamedIndividual IRI="#inventory"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#partOf"/>
+        <NamedIndividual IRI="#camera1"/>
+        <NamedIndividual IRI="#inventory"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#triggers"/>
-        <NamedIndividual IRI="#createBeltDrive"/>
+        <NamedIndividual IRI="#createAssembly"/>
         <NamedIndividual IRI="#addToInventory"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#triggers"/>
+        <NamedIndividual IRI="#createBot"/>
+        <NamedIndividual IRI="#addToParkingLot"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#triggers"/>
@@ -2286,14 +2417,64 @@
         <NamedIndividual IRI="#perform"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#manages"/>
+        <NamedIndividual IRI="#factoryManager"/>
+        <NamedIndividual IRI="#factory"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#manages"/>
+        <NamedIndividual IRI="#inventoryManager"/>
+        <NamedIndividual IRI="#inventory"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#assignedTo"/>
         <NamedIndividual IRI="#mission_create_bd_bot_day"/>
         <NamedIndividual IRI="#MotherShip"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#definedBy"/>
+        <NamedIndividual IRI="#mission_create_bd_bot_day"/>
+        <NamedIndividual IRI="#execute"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#hasTask"/>
         <NamedIndividual IRI="#mission_create_bd_bot_day"/>
-        <NamedIndividual IRI="#task_build_assembly_belt_drive"/>
+        <NamedIndividual IRI="#task_provide_belt_drive_parts"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasTask"/>
+        <NamedIndividual IRI="#mission_create_bd_bot_day"/>
+        <NamedIndividual IRI="#task_provide_day_camera_parts"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#assignedTo"/>
+        <NamedIndividual IRI="#mission_waste_some_time"/>
+        <NamedIndividual IRI="#MotherShip"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#partOf"/>
+        <NamedIndividual IRI="#motor1"/>
+        <NamedIndividual IRI="#inventory"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#partOf"/>
+        <NamedIndividual IRI="#motor2"/>
+        <NamedIndividual IRI="#inventory"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#partOf"/>
+        <NamedIndividual IRI="#motor3"/>
+        <NamedIndividual IRI="#inventory"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#partOf"/>
+        <NamedIndividual IRI="#motor4"/>
+        <NamedIndividual IRI="#inventory"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#manages"/>
+        <NamedIndividual IRI="#parkingLotManager"/>
+        <NamedIndividual IRI="#parkingLot"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#triggers"/>
@@ -2308,7 +2489,7 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#hasMissions"/>
         <NamedIndividual IRI="#simulation_create_gripper_arm_assembly"/>
-        <NamedIndividual IRI="#mission_create_bd_bot_day"/>
+        <NamedIndividual IRI="#mission_waste_some_time"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#simulates"/>
@@ -2322,18 +2503,58 @@
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#assignedTo"/>
+        <NamedIndividual IRI="#task_add_bd_bot_to_parking_lot"/>
+        <NamedIndividual IRI="#parkingLotManager"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#definedBy"/>
+        <NamedIndividual IRI="#task_add_bd_bot_to_parking_lot"/>
+        <NamedIndividual IRI="#addToParkingLot"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#assignedTo"/>
+        <NamedIndividual IRI="#task_add_belt_drive_to_inventory"/>
+        <NamedIndividual IRI="#inventoryManager"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#definedBy"/>
+        <NamedIndividual IRI="#task_add_belt_drive_to_inventory"/>
+        <NamedIndividual IRI="#addToInventory"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasTask"/>
+        <NamedIndividual IRI="#task_add_belt_drive_to_inventory"/>
+        <NamedIndividual IRI="#task_provide_bd_bot_assemblies"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#assignedTo"/>
+        <NamedIndividual IRI="#task_add_day_camera_to_inventory"/>
+        <NamedIndividual IRI="#inventoryManager"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#definedBy"/>
+        <NamedIndividual IRI="#task_add_day_camera_to_inventory"/>
+        <NamedIndividual IRI="#addToInventory"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasTask"/>
+        <NamedIndividual IRI="#task_add_day_camera_to_inventory"/>
+        <NamedIndividual IRI="#task_provide_bd_bot_assemblies"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#assignedTo"/>
         <NamedIndividual IRI="#task_build_assembly_belt_drive"/>
         <NamedIndividual IRI="#factoryManager"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#definedBy"/>
         <NamedIndividual IRI="#task_build_assembly_belt_drive"/>
-        <NamedIndividual IRI="#createBeltDrive"/>
+        <NamedIndividual IRI="#createAssembly"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasNextTask"/>
+        <ObjectProperty IRI="#hasTask"/>
         <NamedIndividual IRI="#task_build_assembly_belt_drive"/>
-        <NamedIndividual IRI="#task_build_assembly_day_camera"/>
+        <NamedIndividual IRI="#task_add_belt_drive_to_inventory"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#assignedTo"/>
@@ -2341,19 +2562,94 @@
         <NamedIndividual IRI="#factoryManager"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasNextTask"/>
+        <ObjectProperty IRI="#definedBy"/>
         <NamedIndividual IRI="#task_build_assembly_day_camera"/>
-        <NamedIndividual IRI="#task_build_bd_bot_day"/>
+        <NamedIndividual IRI="#createAssembly"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasTask"/>
+        <NamedIndividual IRI="#task_build_assembly_day_camera"/>
+        <NamedIndividual IRI="#task_add_day_camera_to_inventory"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#assignedTo"/>
         <NamedIndividual IRI="#task_build_bd_bot_day"/>
         <NamedIndividual IRI="#factoryManager"/>
     </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#definedBy"/>
+        <NamedIndividual IRI="#task_build_bd_bot_day"/>
+        <NamedIndividual IRI="#createBot"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasTask"/>
+        <NamedIndividual IRI="#task_build_bd_bot_day"/>
+        <NamedIndividual IRI="#task_add_bd_bot_to_parking_lot"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#assignedTo"/>
+        <NamedIndividual IRI="#task_provide_bd_bot_assemblies"/>
+        <NamedIndividual IRI="#inventoryManager"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#definedBy"/>
+        <NamedIndividual IRI="#task_provide_bd_bot_assemblies"/>
+        <NamedIndividual IRI="#fetchAssemblies"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasTask"/>
+        <NamedIndividual IRI="#task_provide_bd_bot_assemblies"/>
+        <NamedIndividual IRI="#task_build_bd_bot_day"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#assignedTo"/>
+        <NamedIndividual IRI="#task_provide_belt_drive_parts"/>
+        <NamedIndividual IRI="#inventoryManager"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#definedBy"/>
+        <NamedIndividual IRI="#task_provide_belt_drive_parts"/>
+        <NamedIndividual IRI="#fetchParts"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasTask"/>
+        <NamedIndividual IRI="#task_provide_belt_drive_parts"/>
+        <NamedIndividual IRI="#task_build_assembly_belt_drive"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#assignedTo"/>
+        <NamedIndividual IRI="#task_provide_day_camera_parts"/>
+        <NamedIndividual IRI="#inventoryManager"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#definedBy"/>
+        <NamedIndividual IRI="#task_provide_day_camera_parts"/>
+        <NamedIndividual IRI="#fetchParts"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasTask"/>
+        <NamedIndividual IRI="#task_provide_day_camera_parts"/>
+        <NamedIndividual IRI="#task_build_assembly_day_camera"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#__api__"/>
+        <NamedIndividual IRI="#addToInventory"/>
+        <Literal>definition.addToContainable</Literal>
+    </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
         <NamedIndividual IRI="#addToInventory"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">none</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">api</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#__api__"/>
+        <NamedIndividual IRI="#addToParkingLot"/>
+        <Literal>definition.addToContainable</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#type"/>
+        <NamedIndividual IRI="#addToParkingLot"/>
+        <Literal>api</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#__api__"/>
@@ -2366,9 +2662,24 @@
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">api</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="#__api__"/>
+        <NamedIndividual IRI="#createAssembly"/>
+        <Literal>definition.createAssembly</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
-        <NamedIndividual IRI="#createBeltDrive"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">none</Literal>
+        <NamedIndividual IRI="#createAssembly"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">api</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#__api__"/>
+        <NamedIndividual IRI="#createBot"/>
+        <Literal>definition.createBot</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#type"/>
+        <NamedIndividual IRI="#createBot"/>
+        <Literal>api</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
@@ -2389,6 +2700,36 @@
         <DataProperty IRI="#type"/>
         <NamedIndividual IRI="#execute"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">api</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#__api__"/>
+        <NamedIndividual IRI="#fetchAssemblies"/>
+        <Literal>definition.fetchAssemblies</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#type"/>
+        <NamedIndividual IRI="#fetchAssemblies"/>
+        <Literal>api</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#__api__"/>
+        <NamedIndividual IRI="#fetchParts"/>
+        <Literal>definition.fetchParts</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#type"/>
+        <NamedIndividual IRI="#fetchParts"/>
+        <Literal>api</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeToComplete"/>
+        <NamedIndividual IRI="#mission_create_bd_bot_day"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeToComplete"/>
+        <NamedIndividual IRI="#mission_waste_some_time"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">5</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#__api__"/>
@@ -2420,16 +2761,127 @@
         <NamedIndividual IRI="#simulate"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">api</Literal>
     </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#__params__"/>
+        <NamedIndividual IRI="#task_add_bd_bot_to_parking_lot"/>
+        <Literal>isAvailableIn</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeToComplete"/>
+        <NamedIndividual IRI="#task_add_bd_bot_to_parking_lot"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#__params__"/>
+        <NamedIndividual IRI="#task_add_belt_drive_to_inventory"/>
+        <Literal>assemblyOf</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeToComplete"/>
+        <NamedIndividual IRI="#task_add_belt_drive_to_inventory"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#__params__"/>
+        <NamedIndividual IRI="#task_add_day_camera_to_inventory"/>
+        <Literal>assemblyOf</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeToComplete"/>
+        <NamedIndividual IRI="#task_add_day_camera_to_inventory"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#__params__"/>
+        <NamedIndividual IRI="#task_build_assembly_belt_drive"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">BeltDrive</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeToComplete"/>
+        <NamedIndividual IRI="#task_build_assembly_belt_drive"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#__params__"/>
+        <NamedIndividual IRI="#task_build_assembly_day_camera"/>
+        <Literal>DayCameraRig</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeToComplete"/>
+        <NamedIndividual IRI="#task_build_assembly_day_camera"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#__params__"/>
+        <NamedIndividual IRI="#task_build_bd_bot_day"/>
+        <Literal>BDBotDay</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeToComplete"/>
+        <NamedIndividual IRI="#task_build_bd_bot_day"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#__name_space__"/>
+        <NamedIndividual IRI="#task_provide_bd_bot_assemblies"/>
+        <Literal>kb</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#__query__"/>
+        <NamedIndividual IRI="#task_provide_bd_bot_assemblies"/>
+        <Literal>SELECT ?assembly WHERE {   ?assembly rdf:type kb:BeltDrive .    ?assembly kb:assemblyOf kb:inventory} LIMIT 1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#__query__"/>
+        <NamedIndividual IRI="#task_provide_bd_bot_assemblies"/>
+        <Literal>SELECT ?assembly WHERE {   ?assembly rdf:type kb:DayCameraRig .    ?assembly kb:assemblyOf kb:inventory} LIMIT 1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeToComplete"/>
+        <NamedIndividual IRI="#task_provide_bd_bot_assemblies"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#__name_space__"/>
+        <NamedIndividual IRI="#task_provide_belt_drive_parts"/>
+        <Literal>kb</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#__query__"/>
+        <NamedIndividual IRI="#task_provide_belt_drive_parts"/>
+        <Literal>SELECT ?part WHERE {   ?part rdf:type kb:Belt .   kb:inventory kb:hasPart ?part} LIMIT 2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#__query__"/>
+        <NamedIndividual IRI="#task_provide_belt_drive_parts"/>
+        <Literal>SELECT ?part WHERE {   ?part rdf:type kb:Motor .   kb:inventory kb:hasPart ?part} LIMIT 2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeToComplete"/>
+        <NamedIndividual IRI="#task_provide_belt_drive_parts"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#__name_space__"/>
+        <NamedIndividual IRI="#task_provide_day_camera_parts"/>
+        <Literal>kb</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#__query__"/>
+        <NamedIndividual IRI="#task_provide_day_camera_parts"/>
+        <Literal>SELECT ?part WHERE {   ?part rdf:type kb:Camera .   kb:inventory kb:hasPart ?part} LIMIT 2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeToComplete"/>
+        <NamedIndividual IRI="#task_provide_day_camera_parts"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">1</Literal>
+    </DataPropertyAssertion>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#createsBeltDrive"/>
+        <ObjectProperty IRI="#createsAssembly"/>
         <ObjectProperty IRI="#behaves"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#createsDayCameraRig"/>
-        <ObjectProperty IRI="#behaves"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#createsGripperArm"/>
+        <ObjectProperty IRI="#createsBot"/>
         <ObjectProperty IRI="#behaves"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
@@ -2438,6 +2890,10 @@
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#executes"/>
+        <ObjectProperty IRI="#behaves"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#fetchesParts"/>
         <ObjectProperty IRI="#behaves"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
@@ -2473,16 +2929,16 @@
         <ObjectProperty IRI="#isAvailableIn"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
-        <ObjectProperty IRI="#hasNextTask"/>
-        <ObjectProperty IRI="#taskDependsOn"/>
-    </InverseObjectProperties>
-    <InverseObjectProperties>
         <ObjectProperty IRI="#hasPart"/>
         <ObjectProperty IRI="#partOf"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
         <ObjectProperty IRI="#hasSkill"/>
         <ObjectProperty IRI="#skillOf"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasTask"/>
+        <ObjectProperty IRI="#taskDependsOn"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
         <ObjectProperty IRI="#isManagedBy"/>
@@ -2497,22 +2953,37 @@
         <ObjectProperty IRI="#requires"/>
     </InverseObjectProperties>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="#assemblyOf"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="#assignedTo"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="#definedBy"/>
     </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#isAvailableIn"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#partOf"/>
+    </FunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#hasAssembly"/>
+    </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#hasPart"/>
+    </InverseFunctionalObjectProperty>
     <InverseFunctionalObjectProperty>
         <ObjectProperty IRI="#isAssigned"/>
     </InverseFunctionalObjectProperty>
     <AsymmetricObjectProperty>
-        <ObjectProperty IRI="#createsBeltDrive"/>
+        <ObjectProperty IRI="#canViewIn"/>
     </AsymmetricObjectProperty>
     <AsymmetricObjectProperty>
-        <ObjectProperty IRI="#createsDayCameraRig"/>
+        <ObjectProperty IRI="#createsAssembly"/>
     </AsymmetricObjectProperty>
     <AsymmetricObjectProperty>
-        <ObjectProperty IRI="#createsGripperArm"/>
+        <ObjectProperty IRI="#createsBot"/>
     </AsymmetricObjectProperty>
     <AsymmetricObjectProperty>
         <ObjectProperty IRI="#executes"/>
@@ -2526,40 +2997,47 @@
     <AsymmetricObjectProperty>
         <ObjectProperty IRI="#triggers"/>
     </AsymmetricObjectProperty>
+    <AsymmetricObjectProperty>
+        <ObjectProperty IRI="#viewedBy"/>
+    </AsymmetricObjectProperty>
     <TransitiveObjectProperty>
         <ObjectProperty IRI="#actsOn"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#hasNextTask"/>
     </TransitiveObjectProperty>
     <TransitiveObjectProperty>
         <ObjectProperty IRI="#hasSkill"/>
     </TransitiveObjectProperty>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="#assemblyOf"/>
+        <Class IRI="#Assembly"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="#assignedTo"/>
         <Class IRI="#Executable"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#createsBeltDrive"/>
+        <ObjectProperty IRI="#canViewIn"/>
+        <Class IRI="#Visual"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#createsAssembly"/>
         <ObjectHasValue>
             <ObjectProperty IRI="#hasBehavior"/>
-            <NamedIndividual IRI="#createBeltDrive"/>
+            <NamedIndividual IRI="#createAssembly"/>
         </ObjectHasValue>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#createsDayCameraRig"/>
+        <ObjectProperty IRI="#createsBot"/>
         <ObjectHasValue>
             <ObjectProperty IRI="#hasBehavior"/>
-            <NamedIndividual IRI="#createDayCameraRig"/>
-        </ObjectHasValue>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#createsGripperArm"/>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#hasBehavior"/>
-            <NamedIndividual IRI="#createGripperArm"/>
+            <NamedIndividual IRI="#createBot"/>
         </ObjectHasValue>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#definedBy"/>
-        <Class IRI="#Task"/>
+        <Class IRI="#Executable"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#executes"/>
@@ -2569,8 +3047,29 @@
         </ObjectHasValue>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="#fetchesParts"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#hasBehavior"/>
+            <NamedIndividual IRI="#fetchParts"/>
+        </ObjectHasValue>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasAssembly"/>
+        <ObjectUnionOf>
+            <Class IRI="#Bot"/>
+            <Class IRI="#Inventory"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasBehavior"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <ObjectUnionOf>
+            <Class IRI="#Actor"/>
+            <Class IRI="#Simulator"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasBot"/>
+        <Class IRI="#ParkingLot"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasMissions"/>
@@ -2581,8 +3080,18 @@
         <Class IRI="#Task"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasPart"/>
+        <ObjectUnionOf>
+            <Class IRI="#Assembly"/>
+            <Class IRI="#Inventory"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasTask"/>
-        <Class IRI="#Mission"/>
+        <ObjectUnionOf>
+            <Class IRI="#Mission"/>
+            <Class IRI="#Task"/>
+        </ObjectUnionOf>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#isAssigned"/>
@@ -2595,6 +3104,10 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#manages"/>
         <Class IRI="#Manager"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#partOf"/>
+        <Class IRI="#Part"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#reportsTo"/>
@@ -2619,25 +3132,36 @@
         <ObjectProperty IRI="#triggers"/>
         <Class IRI="#Behavior"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#viewedBy"/>
+        <Class IRI="#TimeOfDay"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#actsOn"/>
         <Class IRI="#Terrain"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#assemblyOf"/>
+        <ObjectUnionOf>
+            <Class IRI="#Bot"/>
+            <Class IRI="#Inventory"/>
+        </ObjectUnionOf>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#assignedTo"/>
         <Class IRI="#Actor"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#createsBeltDrive"/>
-        <Class IRI="#BeltDrive"/>
+        <ObjectProperty IRI="#canViewIn"/>
+        <Class IRI="#TimeOfDay"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#createsDayCameraRig"/>
-        <Class IRI="#DayCameraRig"/>
+        <ObjectProperty IRI="#createsAssembly"/>
+        <Class IRI="#Assembly"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#createsGripperArm"/>
-        <Class IRI="#GripperArm"/>
+        <ObjectProperty IRI="#createsBot"/>
+        <Class IRI="#Bot"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#definedBy"/>
@@ -2652,12 +3176,16 @@
         <Class IRI="#Executable"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasBehavior"/>
-        <Class IRI="#Behavior"/>
+        <ObjectProperty IRI="#fetchesParts"/>
+        <Class IRI="#Part"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasBehaviour"/>
-        <Class IRI="#Behaviour"/>
+        <ObjectProperty IRI="#hasAssembly"/>
+        <Class IRI="#Assembly"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasBehavior"/>
+        <Class IRI="#Behavior"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasBot"/>
@@ -2688,12 +3216,23 @@
         <Class IRI="#Executable"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="#isAvailableIn"/>
+        <Class IRI="#ParkingLot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="#isManagedBy"/>
         <Class IRI="#Manager"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#manages"/>
         <Class IRI="#Containable"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#partOf"/>
+        <ObjectUnionOf>
+            <Class IRI="#Assembly"/>
+            <Class IRI="#Inventory"/>
+        </ObjectUnionOf>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#reportsTo"/>
@@ -2709,12 +3248,23 @@
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#taskDependsOn"/>
-        <Class IRI="#Task"/>
+        <ObjectUnionOf>
+            <Class IRI="#Mission"/>
+            <Class IRI="#Task"/>
+        </ObjectUnionOf>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#triggers"/>
         <Class IRI="#Behavior"/>
     </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#viewedBy"/>
+        <Class IRI="#Visual"/>
+    </ObjectPropertyRange>
+    <DisjointObjectProperties>
+        <ObjectProperty IRI="#hasAssembly"/>
+        <ObjectProperty IRI="#hasPart"/>
+    </DisjointObjectProperties>
     <SubDataPropertyOf>
         <DataProperty IRI="#__api__"/>
         <DataProperty IRI="#method"/>
@@ -2749,7 +3299,10 @@
         <DataProperty IRI="#__name_space__"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
-        <DataProperty IRI="#__query__"/>
+        <DataProperty IRI="#__params__"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#done"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="#good"/>
@@ -2763,6 +3316,10 @@
     <FunctionalDataProperty>
         <DataProperty IRI="#verb"/>
     </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="#done"/>
+        <Class IRI="#Executable"/>
+    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#good"/>
         <Class IRI="#Part"/>
@@ -2788,12 +3345,16 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="#done"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="#good"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#timeToComplete"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
+        <Datatype abbreviatedIRI="xsd:unsignedInt"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#type"/>
