@@ -15,41 +15,55 @@ class Simulator:
         return cls.__instance
 
     @classmethod
-    def behavior(cls, api):
+    def init(cls, ontology_uri=None, agent_class=None, behavior_class=None, simulator_agent=None, simulate=None):
+        cls.__instance = Simulator(
+            ontology_uri,
+            agent_class,
+            behavior_class,
+            simulator_agent,
+            simulate
+        )
+
+    @classmethod
+    def behavior(cls, uri):
         def behavior_wrapper(func):
-            Behavior.add(api, func)
-            
+            Behavior.add(uri, func)
             @wraps(func)
             def decorator_method(*args, **kwargs):
                 if cls.__instance is None:
                     raise Exception('Simulator not initialized')
                 
                 kwargs['simulator'] = cls.__instance
-
                 return_value = func(*args, **kwargs)
-
                 return return_value
+            
             return decorator_method
 
         return behavior_wrapper
 
+    @classmethod
+    def run(cls, until=100):
+        Behavior.sync(cls.__instance)
+        cls.__instance.env.run(until=until)
+
     
-    def __init__(self, ontology_uri=None):
+    def __init__(self, ontology_uri=None, agent_class=None, behavior_class=None, simulator_agent=None, simulate=None):
         self.reasoner = Reasoner(ontology_uri)
         self.call_stack = []
-        self.env = simpy.Environment()
+
+        self.behavior_class = self.reasoner.onto[behavior_class]
+        self.simulator = self.reasoner.onto[simulator_agent]
+        self.simulate = self.reasoner.onto[simulate]
+
+        self.env = simpy.Environment()        
         self.action = self.env.process(self.__run())
         self.agents = simpy.FilterStore(self.env)
 
-        agents = list(self.reasoner.onto.Simulation.agentClass[0].instances())
+        agents = list(self.reasoner.onto[agent_class].instances())
         for agent in agents:
             self.agents.put(agent)
 
-        self.agents.put(self.reasoner.onto.simulator)
-
-    def run(self, until=100):
-        Behavior.sync(self)
-        self.env.run(until=until)
+        self.agents.put(self.simulator)
         
     def push(self, states):
         self.call_stack += states
@@ -62,14 +76,7 @@ class Simulator:
         return self.reasoner.onto
                 
     def __run(self):
-        agent = self.reasoner.onto.simulator
-        behavior = self.reasoner.onto.simulate
-
-        initial_state = State(behavior, agent)
+        initial_state = State(self.simulate, self.simulator)
         self.push([initial_state])
-
-        while len(self.call_stack):
-            next_state = self.call_stack[0]
-            self.call_stack = self.call_stack[1:]
-            yield self.env.process(next_state(self))
+        yield self.env.process(initial_state(self))
 

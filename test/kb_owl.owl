@@ -460,12 +460,6 @@
         <NamedIndividual IRI="#createBot"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#createDayCameraRig"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#createGripperArm"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#execute"/>
     </Declaration>
     <Declaration>
@@ -557,39 +551,6 @@
     </Declaration>
     <Declaration>
         <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
-    </Declaration>
-    <Declaration>
-        <AnnotationProperty IRI="#agentClass"/>
-    </Declaration>
-    <Declaration>
-        <AnnotationProperty IRI="#agentPerform"/>
-    </Declaration>
-    <Declaration>
-        <AnnotationProperty IRI="#apiPath"/>
-    </Declaration>
-    <Declaration>
-        <AnnotationProperty IRI="#behavior"/>
-    </Declaration>
-    <Declaration>
-        <AnnotationProperty IRI="#behaviorClass"/>
-    </Declaration>
-    <Declaration>
-        <AnnotationProperty IRI="#behaviorPredicate"/>
-    </Declaration>
-    <Declaration>
-        <AnnotationProperty IRI="#behaviourClass"/>
-    </Declaration>
-    <Declaration>
-        <AnnotationProperty IRI="#behaviourPredicate"/>
-    </Declaration>
-    <Declaration>
-        <AnnotationProperty IRI="#entrypoint"/>
-    </Declaration>
-    <Declaration>
-        <AnnotationProperty IRI="#getProcessAgent"/>
-    </Declaration>
-    <Declaration>
-        <AnnotationProperty IRI="#simulation"/>
     </Declaration>
     <EquivalentClasses>
         <Class IRI="#Action"/>
@@ -2155,14 +2116,6 @@
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Behavior"/>
-        <NamedIndividual IRI="#createDayCameraRig"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Behavior"/>
-        <NamedIndividual IRI="#createGripperArm"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Behavior"/>
         <NamedIndividual IRI="#execute"/>
     </ClassAssertion>
     <ClassAssertion>
@@ -2403,16 +2356,6 @@
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#triggers"/>
-        <NamedIndividual IRI="#createDayCameraRig"/>
-        <NamedIndividual IRI="#addToInventory"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#triggers"/>
-        <NamedIndividual IRI="#createGripperArm"/>
-        <NamedIndividual IRI="#addToInventory"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#triggers"/>
         <NamedIndividual IRI="#execute"/>
         <NamedIndividual IRI="#perform"/>
     </ObjectPropertyAssertion>
@@ -2634,7 +2577,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#__api__"/>
         <NamedIndividual IRI="#addToInventory"/>
-        <Literal>definition.addToContainable</Literal>
+        <Literal>api://collab_bot/behavior/addToContainable</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
@@ -2644,7 +2587,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#__api__"/>
         <NamedIndividual IRI="#addToParkingLot"/>
-        <Literal>definition.addToContainable</Literal>
+        <Literal>api://collab_bot/behavior/addToContainable</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
@@ -2654,7 +2597,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#__api__"/>
         <NamedIndividual IRI="#assignExecutable"/>
-        <Literal>definition.assignExecutable</Literal>
+        <Literal>api://collab_bot/behavior/assignExecutable</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
@@ -2664,7 +2607,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#__api__"/>
         <NamedIndividual IRI="#createAssembly"/>
-        <Literal>definition.createAssembly</Literal>
+        <Literal>api://collab_bot/behavior/createAssembly</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
@@ -2674,7 +2617,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#__api__"/>
         <NamedIndividual IRI="#createBot"/>
-        <Literal>definition.createBot</Literal>
+        <Literal>api://collab_bot/behavior/createBot</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
@@ -2682,19 +2625,9 @@
         <Literal>api</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#type"/>
-        <NamedIndividual IRI="#createDayCameraRig"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">none</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#type"/>
-        <NamedIndividual IRI="#createGripperArm"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">none</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
         <DataProperty IRI="#__api__"/>
         <NamedIndividual IRI="#execute"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">definition.execute</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">api://collab_bot/behavior/execute</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
@@ -2704,7 +2637,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#__api__"/>
         <NamedIndividual IRI="#fetchAssemblies"/>
-        <Literal>definition.fetchAssemblies</Literal>
+        <Literal>api://collab_bot/behavior/fetchAssemblies</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
@@ -2714,7 +2647,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#__api__"/>
         <NamedIndividual IRI="#fetchParts"/>
-        <Literal>definition.fetchParts</Literal>
+        <Literal>api://collab_bot/behavior/fetchParts</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
@@ -2734,7 +2667,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#__api__"/>
         <NamedIndividual IRI="#perform"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">definition.perform</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">api://collab_bot/behavior/perform</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
@@ -2749,12 +2682,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#__api__"/>
         <NamedIndividual IRI="#simulate"/>
-        <Literal>definition.simulate</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#__params__"/>
-        <NamedIndividual IRI="#simulate"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">simulation</Literal>
+        <Literal>api://collab_bot/behavior/simulate</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
@@ -2839,7 +2767,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#timeToComplete"/>
         <NamedIndividual IRI="#task_provide_bd_bot_assemblies"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">1</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">7</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#__name_space__"/>
@@ -3334,7 +3262,7 @@
     </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="#__api__"/>
-        <Datatype abbreviatedIRI="xsd:token"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#__name__"/>
@@ -3372,120 +3300,6 @@
         <DataProperty IRI="#type"/>
         <DataProperty IRI="#verb"/>
     </DisjointDataProperties>
-    <AnnotationAssertion>
-        <AnnotationProperty IRI="#agentClass"/>
-        <IRI>#Simulation</IRI>
-        <IRI>#Actor</IRI>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty IRI="#agentPerform"/>
-        <IRI>#Simulation</IRI>
-        <Literal>perform</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty IRI="#apiPath"/>
-        <IRI>#Simulation</IRI>
-        <Literal>/Users/in-justin.jose/Documents/Projects/E4R/KnowledgeBot/src/knowledge_bot/api</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty IRI="#behaviorClass"/>
-        <IRI>#Simulation</IRI>
-        <IRI>#Behavior</IRI>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty IRI="#behaviorPredicate"/>
-        <IRI>#Simulation</IRI>
-        <IRI>#hasBehavior</IRI>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty IRI="#getProcessAgent"/>
-        <IRI>#Simulation</IRI>
-        <Literal>agent</Literal>
-    </AnnotationAssertion>
-    <SubAnnotationPropertyOf>
-        <AnnotationProperty IRI="#agentClass"/>
-        <AnnotationProperty IRI="#simulation"/>
-    </SubAnnotationPropertyOf>
-    <SubAnnotationPropertyOf>
-        <AnnotationProperty IRI="#agentPerform"/>
-        <AnnotationProperty IRI="#simulation"/>
-    </SubAnnotationPropertyOf>
-    <SubAnnotationPropertyOf>
-        <AnnotationProperty IRI="#behaviorClass"/>
-        <AnnotationProperty IRI="#behavior"/>
-    </SubAnnotationPropertyOf>
-    <SubAnnotationPropertyOf>
-        <AnnotationProperty IRI="#behaviorPredicate"/>
-        <AnnotationProperty IRI="#behavior"/>
-    </SubAnnotationPropertyOf>
-    <SubAnnotationPropertyOf>
-        <AnnotationProperty IRI="#entrypoint"/>
-        <AnnotationProperty IRI="#simulation"/>
-    </SubAnnotationPropertyOf>
-    <SubAnnotationPropertyOf>
-        <AnnotationProperty IRI="#getProcessAgent"/>
-        <AnnotationProperty IRI="#simulation"/>
-    </SubAnnotationPropertyOf>
-    <AnnotationPropertyRange>
-        <AnnotationProperty IRI="#agentClass"/>
-        <AbbreviatedIRI>owl:Thing</AbbreviatedIRI>
-    </AnnotationPropertyRange>
-    <AnnotationPropertyRange>
-        <AnnotationProperty IRI="#agentPerform"/>
-        <AbbreviatedIRI>xsd:token</AbbreviatedIRI>
-    </AnnotationPropertyRange>
-    <AnnotationPropertyRange>
-        <AnnotationProperty IRI="#apiPath"/>
-        <AbbreviatedIRI>xsd:anyURI</AbbreviatedIRI>
-    </AnnotationPropertyRange>
-    <AnnotationPropertyRange>
-        <AnnotationProperty IRI="#behaviorClass"/>
-        <IRI>#Behavior</IRI>
-    </AnnotationPropertyRange>
-    <AnnotationPropertyRange>
-        <AnnotationProperty IRI="#behaviourClass"/>
-        <AbbreviatedIRI>owl:Thing</AbbreviatedIRI>
-    </AnnotationPropertyRange>
-    <AnnotationPropertyRange>
-        <AnnotationProperty IRI="#behaviourPredicate"/>
-        <AbbreviatedIRI>xsd:token</AbbreviatedIRI>
-    </AnnotationPropertyRange>
-    <AnnotationPropertyRange>
-        <AnnotationProperty IRI="#entrypoint"/>
-        <AbbreviatedIRI>owl:Thing</AbbreviatedIRI>
-    </AnnotationPropertyRange>
-    <AnnotationPropertyRange>
-        <AnnotationProperty IRI="#getProcessAgent"/>
-        <AbbreviatedIRI>xsd:token</AbbreviatedIRI>
-    </AnnotationPropertyRange>
-    <AnnotationPropertyDomain>
-        <AnnotationProperty IRI="#agentClass"/>
-        <IRI>#Simulation</IRI>
-    </AnnotationPropertyDomain>
-    <AnnotationPropertyDomain>
-        <AnnotationProperty IRI="#agentPerform"/>
-        <IRI>#Simulation</IRI>
-    </AnnotationPropertyDomain>
-    <AnnotationPropertyDomain>
-        <AnnotationProperty IRI="#apiPath"/>
-        <IRI>#Simulation</IRI>
-    </AnnotationPropertyDomain>
-    <AnnotationPropertyDomain>
-        <AnnotationProperty IRI="#behaviourClass"/>
-        <IRI>#Simulation</IRI>
-    </AnnotationPropertyDomain>
-    <AnnotationPropertyDomain>
-        <AnnotationProperty IRI="#behaviourPredicate"/>
-        <IRI>#Simulation</IRI>
-    </AnnotationPropertyDomain>
-    <AnnotationPropertyDomain>
-        <AnnotationProperty IRI="#entrypoint"/>
-        <IRI>#Simulation</IRI>
-    </AnnotationPropertyDomain>
-    <AnnotationPropertyDomain>
-        <AnnotationProperty IRI="#getProcessAgent"/>
-        <IRI>#Simulation</IRI>
-    </AnnotationPropertyDomain>
 </Ontology>
 
 

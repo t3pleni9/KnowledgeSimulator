@@ -9,12 +9,12 @@ class Behavior:
     def sync(cls, simulator):
         reasoner = simulator.reasoner
         reasoner.sync_reasoner()
-        behavior_class = reasoner.onto.Simulation.behaviorClass[0]
+        behavior_class = simulator.behavior_class
         for behavior in behavior_class.instances():
             if behavior.type == "api":
                 api = behavior.__api__
-                
                 api_behavior = cls.__behaviors.get(api, None)
+                
                 if api_behavior is not None:
                     api_behavior.behavior = behavior
                     api_behavior.simulator = simulator
