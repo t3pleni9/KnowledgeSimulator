@@ -2,23 +2,23 @@ class Behavior:
     __behaviors = {}
 
     @classmethod
-    def add(cls, api, function):
-        cls.__behaviors[api] = Behavior(function)
+    def add(cls, uri, function):
+        cls.__behaviors[uri] = Behavior(function)
     
     @classmethod
     def sync(cls, simulator):
         reasoner = simulator.reasoner
         reasoner.sync_reasoner()
+        uri_property = simulator.uri_property
         behavior_class = simulator.behavior_class
         for behavior in behavior_class.instances():
-            if behavior.type == "api":
-                api = behavior.__api__
-                api_behavior = cls.__behaviors.get(api, None)
-                
-                if api_behavior is not None:
-                    api_behavior.behavior = behavior
-                    api_behavior.simulator = simulator
-                    cls.__behaviors[behavior] = api_behavior
+            uri = getattr(behavior, uri_property)
+            api_behavior = cls.__behaviors.get(uri, None)
+
+            if api_behavior is not None:
+                api_behavior.behavior = behavior
+                api_behavior.simulator = simulator
+                cls.__behaviors[behavior] = api_behavior
 
     @classmethod
     def perform(cls, behavior, agent, task):

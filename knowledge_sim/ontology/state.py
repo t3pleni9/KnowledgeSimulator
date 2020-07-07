@@ -8,7 +8,7 @@ class State:
         self.behavior = behavior
         self.agent = agent
         self.args = args
-        self.timeout = timeout
+        self.timeout = timeout if timeout is not None else 1
     
     def __call__(self, simulator):
         def perform_task(next_state, simulator):
@@ -21,7 +21,7 @@ class State:
 
         if next_state == State.NILL:
             simulator.agents.put(agent)
-            return
+            return None
         
         if next_state == State.WAIT:
             simulator.agents.put(agent)

@@ -7,7 +7,7 @@ def get_next_tasks(task):
 def add_to_containable(manager, task, simulator=None, *args, **kwargs):
     ontology = simulator.ontology
     entity = task.entity
-    setattr(entity, task.__params__, manager.manages[0])
+    setattr(entity, task.params, manager.manages[0])
 
     simulator.sync_reasoner()
     task.done = True
@@ -18,13 +18,13 @@ def add_to_containable(manager, task, simulator=None, *args, **kwargs):
 def create_assembly(factory_manager, task, simulator=None, *args, **kwargs):
     ontology = simulator.ontology
     
-    assembly_type = ontology[task.__params__]
+    assembly_type = ontology[task.params]
     parts = task.parts
 
     assembly = assembly_type()
     for part in parts:
         part.partOf = assembly
-
+        
     simulator.sync_reasoner()
     for next_tasks in task.hasTask:
         next_tasks.entity = assembly
@@ -35,7 +35,7 @@ def create_assembly(factory_manager, task, simulator=None, *args, **kwargs):
 def create_bot(factory_manager, task, simulator=None, *args, **kwargs):
     ontology = simulator.ontology
     
-    bot_type = ontology[task.__params__]
+    bot_type = ontology[task.params]
     assemblies = task.assemblies
 
     bot = bot_type()
@@ -59,8 +59,8 @@ def fetchAssemblies(inventoryManager, task, simulator=None, *args, **kwargs):
     if task.done:
         return State.NILL
     
-    queries = task.__query__
-    namespace = task.__name_space__
+    queries = task.query
+    namespace = task.name_space
     query_result = [simulator.reasoner.run_query(query, namespace) for query in queries]
     assemblies = [result[0] for results in query_result for result in results]
     
@@ -72,8 +72,8 @@ def fetchAssemblies(inventoryManager, task, simulator=None, *args, **kwargs):
 
 @Simulator.behavior('api://collab_bot/behavior/fetchParts')    
 def fetchParts(inventoryManager, task, simulator=None, *args, **kwargs):
-    queries = task.__query__
-    namespace = task.__name_space__
+    queries = task.query
+    namespace = task.name_space
     query_result = [simulator.reasoner.run_query(query, namespace) for query in queries]
     parts = [result[0] for results in query_result for result in results]
     
@@ -115,7 +115,7 @@ def execute(actor, executable, *args, **kwargs):
 def assignExecutable(simulator_agent, simulation, *args, **kwargs):
     return [State(mission.definedBy, mission.assignedTo, mission, mission.timeToComplete) for mission in list(simulation.hasMissions)]
     
-@Simulator.behavior('api://collab_bot/behavior/simulate')    
+@Simulator.behavior('api://collab_bot/behavior/simulate')
 def simulate(simulator_agent,  *args, **kwargs):
     behavior = kwargs['behavior']
     return [State(behavior.triggers[0], simulator_agent, simulation) for simulation in list(simulator_agent.simulates)]
@@ -125,9 +125,11 @@ def main():
         ontology_uri="./kb_owl.owl",
         agent_class="Actor",
         behavior_class="Behavior",
+        uri_property="uri",
         simulator_agent="simulator",
         simulate="simulate"
     )
+    
     Simulator.run(until = 100)
     simulator = Simulator.get_instance()
     oo = simulator.ontology

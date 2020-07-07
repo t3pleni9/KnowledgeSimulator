@@ -343,19 +343,7 @@
         <ObjectProperty IRI="#viewedBy"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="#__api__"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#__name__"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#__name_space__"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#__params__"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#__query__"/>
+        <DataProperty IRI="#behavior"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#done"/>
@@ -364,10 +352,19 @@
         <DataProperty IRI="#good"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="#method"/>
+        <DataProperty IRI="#name_space"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#params"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#query"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#sparql"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#task"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#timeToComplete"/>
@@ -376,7 +373,7 @@
         <DataProperty IRI="#type"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="#verb"/>
+        <DataProperty IRI="#uri"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#BeltDriveTransportation"/>
@@ -2575,18 +2572,13 @@
         <NamedIndividual IRI="#task_build_assembly_day_camera"/>
     </ObjectPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__api__"/>
-        <NamedIndividual IRI="#addToInventory"/>
-        <Literal>api://collab_bot/behavior/addToContainable</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
         <NamedIndividual IRI="#addToInventory"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">api</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__api__"/>
-        <NamedIndividual IRI="#addToParkingLot"/>
+        <DataProperty IRI="#uri"/>
+        <NamedIndividual IRI="#addToInventory"/>
         <Literal>api://collab_bot/behavior/addToContainable</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
@@ -2595,64 +2587,69 @@
         <Literal>api</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__api__"/>
+        <DataProperty IRI="#uri"/>
+        <NamedIndividual IRI="#addToParkingLot"/>
+        <Literal>api://collab_bot/behavior/addToContainable</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#type"/>
+        <NamedIndividual IRI="#assignExecutable"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">api</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#uri"/>
         <NamedIndividual IRI="#assignExecutable"/>
         <Literal>api://collab_bot/behavior/assignExecutable</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
-        <NamedIndividual IRI="#assignExecutable"/>
+        <NamedIndividual IRI="#createAssembly"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">api</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__api__"/>
+        <DataProperty IRI="#uri"/>
         <NamedIndividual IRI="#createAssembly"/>
         <Literal>api://collab_bot/behavior/createAssembly</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
-        <NamedIndividual IRI="#createAssembly"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">api</Literal>
+        <NamedIndividual IRI="#createBot"/>
+        <Literal>api</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__api__"/>
+        <DataProperty IRI="#uri"/>
         <NamedIndividual IRI="#createBot"/>
         <Literal>api://collab_bot/behavior/createBot</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
-        <NamedIndividual IRI="#createBot"/>
-        <Literal>api</Literal>
+        <NamedIndividual IRI="#execute"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">api</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__api__"/>
+        <DataProperty IRI="#uri"/>
         <NamedIndividual IRI="#execute"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">api://collab_bot/behavior/execute</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
-        <NamedIndividual IRI="#execute"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">api</Literal>
+        <NamedIndividual IRI="#fetchAssemblies"/>
+        <Literal>api</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__api__"/>
+        <DataProperty IRI="#uri"/>
         <NamedIndividual IRI="#fetchAssemblies"/>
         <Literal>api://collab_bot/behavior/fetchAssemblies</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
-        <NamedIndividual IRI="#fetchAssemblies"/>
+        <NamedIndividual IRI="#fetchParts"/>
         <Literal>api</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__api__"/>
+        <DataProperty IRI="#uri"/>
         <NamedIndividual IRI="#fetchParts"/>
         <Literal>api://collab_bot/behavior/fetchParts</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#type"/>
-        <NamedIndividual IRI="#fetchParts"/>
-        <Literal>api</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#timeToComplete"/>
@@ -2665,14 +2662,14 @@
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">5</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__api__"/>
-        <NamedIndividual IRI="#perform"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">api://collab_bot/behavior/perform</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
         <NamedIndividual IRI="#perform"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">api</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#uri"/>
+        <NamedIndividual IRI="#perform"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">api://collab_bot/behavior/perform</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
@@ -2680,17 +2677,17 @@
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">none</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__api__"/>
-        <NamedIndividual IRI="#simulate"/>
-        <Literal>api://collab_bot/behavior/simulate</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
         <NamedIndividual IRI="#simulate"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">api</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__params__"/>
+        <DataProperty IRI="#uri"/>
+        <NamedIndividual IRI="#simulate"/>
+        <Literal>api://collab_bot/behavior/simulate</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#params"/>
         <NamedIndividual IRI="#task_add_bd_bot_to_parking_lot"/>
         <Literal>isAvailableIn</Literal>
     </DataPropertyAssertion>
@@ -2700,7 +2697,7 @@
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">1</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__params__"/>
+        <DataProperty IRI="#params"/>
         <NamedIndividual IRI="#task_add_belt_drive_to_inventory"/>
         <Literal>assemblyOf</Literal>
     </DataPropertyAssertion>
@@ -2710,7 +2707,7 @@
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">1</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__params__"/>
+        <DataProperty IRI="#params"/>
         <NamedIndividual IRI="#task_add_day_camera_to_inventory"/>
         <Literal>assemblyOf</Literal>
     </DataPropertyAssertion>
@@ -2720,7 +2717,7 @@
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">1</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__params__"/>
+        <DataProperty IRI="#params"/>
         <NamedIndividual IRI="#task_build_assembly_belt_drive"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">BeltDrive</Literal>
     </DataPropertyAssertion>
@@ -2730,7 +2727,7 @@
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">3</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__params__"/>
+        <DataProperty IRI="#params"/>
         <NamedIndividual IRI="#task_build_assembly_day_camera"/>
         <Literal>DayCameraRig</Literal>
     </DataPropertyAssertion>
@@ -2740,7 +2737,7 @@
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">3</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__params__"/>
+        <DataProperty IRI="#params"/>
         <NamedIndividual IRI="#task_build_bd_bot_day"/>
         <Literal>BDBotDay</Literal>
     </DataPropertyAssertion>
@@ -2750,17 +2747,17 @@
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">3</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__name_space__"/>
+        <DataProperty IRI="#name_space"/>
         <NamedIndividual IRI="#task_provide_bd_bot_assemblies"/>
         <Literal>kb</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__query__"/>
+        <DataProperty IRI="#query"/>
         <NamedIndividual IRI="#task_provide_bd_bot_assemblies"/>
         <Literal>SELECT ?assembly WHERE {   ?assembly rdf:type kb:BeltDrive .    ?assembly kb:assemblyOf kb:inventory} LIMIT 1</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__query__"/>
+        <DataProperty IRI="#query"/>
         <NamedIndividual IRI="#task_provide_bd_bot_assemblies"/>
         <Literal>SELECT ?assembly WHERE {   ?assembly rdf:type kb:DayCameraRig .    ?assembly kb:assemblyOf kb:inventory} LIMIT 1</Literal>
     </DataPropertyAssertion>
@@ -2770,17 +2767,17 @@
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">7</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__name_space__"/>
+        <DataProperty IRI="#name_space"/>
         <NamedIndividual IRI="#task_provide_belt_drive_parts"/>
         <Literal>kb</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__query__"/>
+        <DataProperty IRI="#query"/>
         <NamedIndividual IRI="#task_provide_belt_drive_parts"/>
         <Literal>SELECT ?part WHERE {   ?part rdf:type kb:Belt .   kb:inventory kb:hasPart ?part} LIMIT 2</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__query__"/>
+        <DataProperty IRI="#query"/>
         <NamedIndividual IRI="#task_provide_belt_drive_parts"/>
         <Literal>SELECT ?part WHERE {   ?part rdf:type kb:Motor .   kb:inventory kb:hasPart ?part} LIMIT 2</Literal>
     </DataPropertyAssertion>
@@ -2790,12 +2787,12 @@
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">1</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__name_space__"/>
+        <DataProperty IRI="#name_space"/>
         <NamedIndividual IRI="#task_provide_day_camera_parts"/>
         <Literal>kb</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#__query__"/>
+        <DataProperty IRI="#query"/>
         <NamedIndividual IRI="#task_provide_day_camera_parts"/>
         <Literal>SELECT ?part WHERE {   ?part rdf:type kb:Camera .   kb:inventory kb:hasPart ?part} LIMIT 2</Literal>
     </DataPropertyAssertion>
@@ -3194,46 +3191,44 @@
         <ObjectProperty IRI="#hasPart"/>
     </DisjointObjectProperties>
     <SubDataPropertyOf>
-        <DataProperty IRI="#__api__"/>
-        <DataProperty IRI="#method"/>
-    </SubDataPropertyOf>
-    <SubDataPropertyOf>
-        <DataProperty IRI="#__name__"/>
-        <DataProperty IRI="#method"/>
-    </SubDataPropertyOf>
-    <SubDataPropertyOf>
-        <DataProperty IRI="#__name_space__"/>
+        <DataProperty IRI="#name_space"/>
         <DataProperty IRI="#sparql"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
-        <DataProperty IRI="#__params__"/>
-        <DataProperty IRI="#method"/>
+        <DataProperty IRI="#params"/>
+        <DataProperty IRI="#task"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
-        <DataProperty IRI="#__query__"/>
+        <DataProperty IRI="#query"/>
         <DataProperty IRI="#sparql"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#sparql"/>
+        <DataProperty IRI="#task"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
         <DataProperty IRI="#timeToComplete"/>
-        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+        <DataProperty IRI="#task"/>
     </SubDataPropertyOf>
-    <FunctionalDataProperty>
-        <DataProperty IRI="#__api__"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="#__name__"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="#__name_space__"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="#__params__"/>
-    </FunctionalDataProperty>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#type"/>
+        <DataProperty IRI="#behavior"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#uri"/>
+        <DataProperty IRI="#behavior"/>
+    </SubDataPropertyOf>
     <FunctionalDataProperty>
         <DataProperty IRI="#done"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="#good"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#name_space"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#params"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="#timeToComplete"/>
@@ -3242,7 +3237,7 @@
         <DataProperty IRI="#type"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
-        <DataProperty IRI="#verb"/>
+        <DataProperty IRI="#uri"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="#done"/>
@@ -3256,22 +3251,6 @@
         <DataProperty IRI="#type"/>
         <Class IRI="#Behavior"/>
     </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#verb"/>
-        <Class IRI="#Behavior"/>
-    </DataPropertyDomain>
-    <DataPropertyRange>
-        <DataProperty IRI="#__api__"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#__name__"/>
-        <Datatype abbreviatedIRI="xsd:token"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#__query__"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#done"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
@@ -3279,6 +3258,10 @@
     <DataPropertyRange>
         <DataProperty IRI="#good"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#query"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#timeToComplete"/>
@@ -3289,17 +3272,9 @@
         <Datatype abbreviatedIRI="xsd:token"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="#verb"/>
-        <Datatype abbreviatedIRI="xsd:token"/>
+        <DataProperty IRI="#uri"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
-    <DisjointDataProperties>
-        <DataProperty IRI="#good"/>
-        <DataProperty IRI="#method"/>
-        <DataProperty IRI="#sparql"/>
-        <DataProperty IRI="#timeToComplete"/>
-        <DataProperty IRI="#type"/>
-        <DataProperty IRI="#verb"/>
-    </DisjointDataProperties>
 </Ontology>
 
 
