@@ -118,7 +118,7 @@ def assignExecutable(simulator_agent, simulation, *args, **kwargs):
 @Simulator.behavior('api://collab_bot/behavior/simulate')
 def simulate(simulator_agent,  *args, **kwargs):
     behavior = kwargs['behavior']
-    return [State(behavior.triggers[0], simulator_agent, simulation) for simulation in list(simulator_agent.simulates)]
+    return [State(simulation.definedBy, simulator_agent, simulation) for simulation in list(simulator_agent.simulates)]
 
 def main():
     Simulator.init(
@@ -126,14 +126,15 @@ def main():
         agent_class="Actor",
         behavior_class="Behavior",
         uri_property="uri",
-        simulator_agent="simulator",
+        simulator="simulator",
         simulate="simulate"
     )
     
     Simulator.run(until = 100)
     simulator = Simulator.get_instance()
     oo = simulator.ontology
-    oo.save('/Users/in-justin.jose/temp2.owl')
+    oo.save('./output.owl')
+
 
 if __name__ == '__main__':
     main()

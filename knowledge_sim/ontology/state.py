@@ -14,11 +14,11 @@ class State:
         def perform_task(next_state, simulator):
             yield simulator.env.process(next_state(simulator))
             
-        now = simulator.env.now    
         agent = yield simulator.agents.get(lambda t: t == self.agent)
         next_state = Behavior.perform(self.behavior, agent, self.args)
         waiting = ""
 
+        now = simulator.env.now    
         if next_state == State.NILL:
             simulator.agents.put(agent)
             return None
@@ -27,12 +27,12 @@ class State:
             simulator.agents.put(agent)
             yield simulator.env.timeout(self.timeout)
             next_state = [self]
-            print(f"{now} Waiting {self.behavior} {self.agent} {self.args}" )
+            print(f"{now} Waiting {self.agent.name} {self.behavior.name} {self.args}" )
 
         else:
             yield simulator.env.timeout(self.timeout)
             simulator.agents.put(agent)
-            print(f"{now} Performable {self.behavior} {self.agent} {self.args} in progress for {self.timeout} secs" )
+            print(f"{now} Simulating  {self.agent.name} {self.behavior.name} {self.args} {self.timeout} secs" )
         
         for state in next_state:
             simulator.env.process(perform_task(state, simulator))

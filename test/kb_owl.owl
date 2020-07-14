@@ -46,9 +46,6 @@
         <Class IRI="#Behavior"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Behaviour"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#Belt"/>
     </Declaration>
     <Declaration>
@@ -337,9 +334,6 @@
         <ObjectProperty IRI="#taskDependsOn"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#triggers"/>
-    </Declaration>
-    <Declaration>
         <ObjectProperty IRI="#viewedBy"/>
     </Declaration>
     <Declaration>
@@ -409,9 +403,6 @@
         <NamedIndividual IRI="#Map"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#MotherShip"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#Night"/>
     </Declaration>
     <Declaration>
@@ -478,10 +469,10 @@
         <NamedIndividual IRI="#inventoryManager"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#mission_create_bd_bot_day"/>
+        <NamedIndividual IRI="#landerMissionControl"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#mission_waste_some_time"/>
+        <NamedIndividual IRI="#mission_create_bd_bot_day"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#motor1"/>
@@ -512,9 +503,6 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#simulation_create_BDBotDay"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#simulation_create_gripper_arm_assembly"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#simulator"/>
@@ -1178,7 +1166,7 @@
         </ObjectIntersectionOf>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Behaviour"/>
+        <Class IRI="#Behavior"/>
         <Class IRI="#DomainConstant"/>
     </SubClassOf>
     <SubClassOf>
@@ -1677,6 +1665,13 @@
     </SubClassOf>
     <DisjointClasses>
         <Class IRI="#Action"/>
+        <Class IRI="#Behavior"/>
+        <Class IRI="#Skill"/>
+        <Class IRI="#Terrain"/>
+        <Class IRI="#TimeOfDay"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Action"/>
         <Class IRI="#Terrain"/>
         <Class IRI="#TimeOfDay"/>
     </DisjointClasses>
@@ -1700,12 +1695,6 @@
     <DisjointClasses>
         <Class IRI="#BDBotDay"/>
         <Class IRI="#BDBotNight"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Behavior"/>
-        <Class IRI="#PlanetryExplorationDomain"/>
-        <Class IRI="#Simulation"/>
-        <Class IRI="#Simulator"/>
     </DisjointClasses>
     <DisjointClasses>
         <Class IRI="#Belt"/>
@@ -1746,6 +1735,11 @@
     <DisjointClasses>
         <Class IRI="#Mission"/>
         <Class IRI="#Task"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#PlanetryExplorationDomain"/>
+        <Class IRI="#Simulation"/>
+        <Class IRI="#Simulator"/>
     </DisjointClasses>
     <ClassAssertion>
         <Class IRI="#DomainConstant"/>
@@ -1943,10 +1937,6 @@
         <NamedIndividual IRI="#Map"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#Orchestrator"/>
-        <NamedIndividual IRI="#MotherShip"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="#DomainConstant"/>
         <NamedIndividual IRI="#Night"/>
     </ClassAssertion>
@@ -2140,12 +2130,12 @@
         <NamedIndividual IRI="#inventoryManager"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#Mission"/>
-        <NamedIndividual IRI="#mission_create_bd_bot_day"/>
+        <Class IRI="#Orchestrator"/>
+        <NamedIndividual IRI="#landerMissionControl"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Mission"/>
-        <NamedIndividual IRI="#mission_waste_some_time"/>
+        <NamedIndividual IRI="#mission_create_bd_bot_day"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Motor"/>
@@ -2186,10 +2176,6 @@
     <ClassAssertion>
         <Class IRI="#Simulation"/>
         <NamedIndividual IRI="#simulation_create_BDBotDay"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Simulation"/>
-        <NamedIndividual IRI="#simulation_create_gripper_arm_assembly"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Simulator"/>
@@ -2277,16 +2263,6 @@
         <NamedIndividual IRI="#FinDriveTransportation"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#supervises"/>
-        <NamedIndividual IRI="#MotherShip"/>
-        <NamedIndividual IRI="#inventoryManager"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#supervises"/>
-        <NamedIndividual IRI="#MotherShip"/>
-        <NamedIndividual IRI="#parkingLotManager"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#viewedBy"/>
         <NamedIndividual IRI="#Night"/>
         <NamedIndividual IRI="#NightVision"/>
@@ -2322,11 +2298,6 @@
         <NamedIndividual IRI="#FinDriveTransportation"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#triggers"/>
-        <NamedIndividual IRI="#assignExecutable"/>
-        <NamedIndividual IRI="#execute"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#partOf"/>
         <NamedIndividual IRI="#belt1"/>
         <NamedIndividual IRI="#inventory"/>
@@ -2342,21 +2313,6 @@
         <NamedIndividual IRI="#inventory"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#triggers"/>
-        <NamedIndividual IRI="#createAssembly"/>
-        <NamedIndividual IRI="#addToInventory"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#triggers"/>
-        <NamedIndividual IRI="#createBot"/>
-        <NamedIndividual IRI="#addToParkingLot"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#triggers"/>
-        <NamedIndividual IRI="#execute"/>
-        <NamedIndividual IRI="#perform"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#manages"/>
         <NamedIndividual IRI="#factoryManager"/>
         <NamedIndividual IRI="#factory"/>
@@ -2367,9 +2323,19 @@
         <NamedIndividual IRI="#inventory"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#supervises"/>
+        <NamedIndividual IRI="#landerMissionControl"/>
+        <NamedIndividual IRI="#inventoryManager"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#supervises"/>
+        <NamedIndividual IRI="#landerMissionControl"/>
+        <NamedIndividual IRI="#parkingLotManager"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#assignedTo"/>
         <NamedIndividual IRI="#mission_create_bd_bot_day"/>
-        <NamedIndividual IRI="#MotherShip"/>
+        <NamedIndividual IRI="#landerMissionControl"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#definedBy"/>
@@ -2385,11 +2351,6 @@
         <ObjectProperty IRI="#hasTask"/>
         <NamedIndividual IRI="#mission_create_bd_bot_day"/>
         <NamedIndividual IRI="#task_provide_day_camera_parts"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#assignedTo"/>
-        <NamedIndividual IRI="#mission_waste_some_time"/>
-        <NamedIndividual IRI="#MotherShip"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#partOf"/>
@@ -2417,8 +2378,8 @@
         <NamedIndividual IRI="#parkingLot"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#triggers"/>
-        <NamedIndividual IRI="#simulate"/>
+        <ObjectProperty IRI="#definedBy"/>
+        <NamedIndividual IRI="#simulation_create_BDBotDay"/>
         <NamedIndividual IRI="#assignExecutable"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
@@ -2427,19 +2388,9 @@
         <NamedIndividual IRI="#mission_create_bd_bot_day"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasMissions"/>
-        <NamedIndividual IRI="#simulation_create_gripper_arm_assembly"/>
-        <NamedIndividual IRI="#mission_waste_some_time"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#simulates"/>
         <NamedIndividual IRI="#simulator"/>
         <NamedIndividual IRI="#simulation_create_BDBotDay"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#simulates"/>
-        <NamedIndividual IRI="#simulator"/>
-        <NamedIndividual IRI="#simulation_create_gripper_arm_assembly"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#assignedTo"/>
@@ -2657,11 +2608,6 @@
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#timeToComplete"/>
-        <NamedIndividual IRI="#mission_waste_some_time"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">5</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
         <NamedIndividual IRI="#perform"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">api</Literal>
@@ -2829,10 +2775,6 @@
         <ObjectProperty IRI="#simulates"/>
         <ObjectProperty IRI="#behaves"/>
     </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#triggers"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
     <InverseObjectProperties>
         <ObjectProperty IRI="#actedUponBy"/>
         <ObjectProperty IRI="#actsOn"/>
@@ -2920,9 +2862,6 @@
         <ObjectProperty IRI="#simulates"/>
     </AsymmetricObjectProperty>
     <AsymmetricObjectProperty>
-        <ObjectProperty IRI="#triggers"/>
-    </AsymmetricObjectProperty>
-    <AsymmetricObjectProperty>
         <ObjectProperty IRI="#viewedBy"/>
     </AsymmetricObjectProperty>
     <TransitiveObjectProperty>
@@ -2962,7 +2901,10 @@
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#definedBy"/>
-        <Class IRI="#Executable"/>
+        <ObjectUnionOf>
+            <Class IRI="#Executable"/>
+            <Class IRI="#Simulation"/>
+        </ObjectUnionOf>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#executes"/>
@@ -3052,10 +2994,6 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#taskDependsOn"/>
         <Class IRI="#Task"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#triggers"/>
-        <Class IRI="#Behavior"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#viewedBy"/>
@@ -3177,10 +3115,6 @@
             <Class IRI="#Mission"/>
             <Class IRI="#Task"/>
         </ObjectUnionOf>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#triggers"/>
-        <Class IRI="#Behavior"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#viewedBy"/>

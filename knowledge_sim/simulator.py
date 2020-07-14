@@ -15,13 +15,13 @@ class Simulator:
         return cls.__instance
 
     @classmethod
-    def init(cls, ontology_uri=None, agent_class=None, behavior_class=None, uri_property=None, simulator_agent=None, simulate=None):
+    def init(cls, ontology_uri=None, agent_class=None, behavior_class=None, uri_property=None, simulator=None, simulate=None):
         cls.__instance = Simulator(
             ontology_uri,
             agent_class,
             behavior_class,
             uri_property,
-            simulator_agent,
+            simulator,
             simulate
         )
 
@@ -48,13 +48,12 @@ class Simulator:
         cls.__instance.env.run(until=until)
 
     
-    def __init__(self, ontology_uri=None, agent_class=None, behavior_class=None, uri_property=None, simulator_agent=None, simulate=None):
+    def __init__(self, ontology_uri=None, agent_class=None, behavior_class=None, uri_property=None, simulator=None, simulate=None):
         self.reasoner = Reasoner(ontology_uri)
-        self.call_stack = []
 
         self.behavior_class = self.reasoner.onto[behavior_class]
         self.uri_property = uri_property
-        self.simulator = self.reasoner.onto[simulator_agent]
+        self.simulator = self.reasoner.onto[simulator]
         self.simulate = self.reasoner.onto[simulate]
 
         self.env = simpy.Environment()        
@@ -67,9 +66,6 @@ class Simulator:
 
         self.agents.put(self.simulator)
         
-    def push(self, states):
-        self.call_stack += states
-
     def sync_reasoner(self):
         self.reasoner.sync_reasoner()
 
