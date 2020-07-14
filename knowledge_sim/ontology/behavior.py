@@ -16,7 +16,6 @@ class Behavior:
             api_behavior = cls.__behaviors.get(uri, None)
 
             if api_behavior is not None:
-                api_behavior.behavior = behavior
                 api_behavior.simulator = simulator
                 cls.__behaviors[behavior] = api_behavior
 
@@ -26,17 +25,15 @@ class Behavior:
         if api_behavior is None:
             return None
 
-        return api_behavior(agent, task)
+        return api_behavior(agent, task, behavior=behavior)
 
     def __init__(self, function):
         self.function = function
-        self.behavior = None
         self.simulator = None
 
     def __call__(self, *args, **kwargs):
         return self.function(
             simulator=self.simulator,
-            behavior=self.behavior,
             *args, **kwargs
         )
 
