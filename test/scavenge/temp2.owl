@@ -1,0 +1,2734 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://www.semanticweb.org/slam/ontologies/2020/1/Knowledge-bot-ontology"
+         xmlns="http://www.semanticweb.org/slam/ontologies/2020/1/Knowledge-bot-ontology#">
+
+<owl:Ontology rdf:about="http://www.semanticweb.org/slam/ontologies/2020/1/Knowledge-bot-ontology"/>
+
+<owl:ObjectProperty rdf:about="#actedUponBy">
+  <owl:inverseOf rdf:resource="#actsOn"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#actsOn">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  <rdfs:range rdf:resource="#Terrain"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#assemblyOf">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Assembly"/>
+  <rdfs:range>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Bot"/>
+        <rdf:Description rdf:about="#Inventory"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:range>
+  <owl:inverseOf rdf:resource="#hasAssembly"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#assignedTo">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Executable"/>
+  <rdfs:range rdf:resource="#Actor"/>
+  <owl:inverseOf rdf:resource="#isAssigned"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#behaves"/>
+
+<owl:ObjectProperty rdf:about="#canViewIn">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdfs:domain rdf:resource="#Visual"/>
+  <rdfs:range rdf:resource="#TimeOfDay"/>
+  <owl:inverseOf rdf:resource="#viewedBy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#createsAssembly">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdfs:domain>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasBehavior"/>
+      <owl:hasValue rdf:resource="#createAssembly"/>
+    </owl:Restriction>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#Assembly"/>
+  <rdfs:subPropertyOf rdf:resource="#behaves"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#createsBot">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdfs:domain>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasBehavior"/>
+      <owl:hasValue rdf:resource="#createBot"/>
+    </owl:Restriction>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#Bot"/>
+  <rdfs:subPropertyOf rdf:resource="#behaves"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#definedBy">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Executable"/>
+        <rdf:Description rdf:about="#Simulation"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#Behavior"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#diagnosesHealthOf">
+  <rdfs:range rdf:resource="#Bot"/>
+  <rdfs:subPropertyOf rdf:resource="#behaves"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#executes">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdfs:domain>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasBehavior"/>
+      <owl:hasValue rdf:resource="#execute"/>
+    </owl:Restriction>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#Executable"/>
+  <rdfs:subPropertyOf rdf:resource="#behaves"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#fetchesParts">
+  <rdfs:domain>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasBehavior"/>
+      <owl:hasValue rdf:resource="#fetchParts"/>
+    </owl:Restriction>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#Part"/>
+  <rdfs:subPropertyOf rdf:resource="#behaves"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasAssembly">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Bot"/>
+        <rdf:Description rdf:about="#Inventory"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#Assembly"/>
+  <owl:propertyDisjointWith rdf:resource="#hasPart"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasBehavior">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Actor"/>
+        <rdf:Description rdf:about="#Simulator"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#Behavior"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasBot">
+  <rdfs:domain rdf:resource="#ParkingLot"/>
+  <rdfs:range rdf:resource="#Bot"/>
+  <owl:inverseOf rdf:resource="#isAvailableIn"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasMissions">
+  <rdfs:domain rdf:resource="#Simulation"/>
+  <rdfs:range rdf:resource="#Mission"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasNextTask">
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Mission"/>
+        <rdf:Description rdf:about="#Task"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#Task"/>
+  <owl:inverseOf rdf:resource="#hasPreviousTask"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasPart">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Assembly"/>
+        <rdf:Description rdf:about="#Inventory"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#Part"/>
+  <owl:inverseOf rdf:resource="#partOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasPreviousTask"/>
+
+<owl:ObjectProperty rdf:about="#hasQuality">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Assembly"/>
+        <rdf:Description rdf:about="#Bot"/>
+        <rdf:Description rdf:about="#Part"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#Quality"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasSimulation">
+  <owl:inverseOf rdf:resource="#simulationDependsOn"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasSkill">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  <rdfs:range rdf:resource="#Skill"/>
+  <owl:inverseOf rdf:resource="#skillOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasTask">
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Mission"/>
+        <rdf:Description rdf:about="#Task"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#Task"/>
+  <owl:inverseOf rdf:resource="#taskDependsOn"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isAssigned">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Actor"/>
+  <rdfs:range rdf:resource="#Executable"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isAvailableIn">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Bot"/>
+  <rdfs:range rdf:resource="#ParkingLot"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isManagedBy">
+  <rdfs:range rdf:resource="#Manager"/>
+  <owl:inverseOf rdf:resource="#manages"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#manages">
+  <rdfs:domain rdf:resource="#Manager"/>
+  <rdfs:range rdf:resource="#Containable"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#partOf">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Part"/>
+  <rdfs:range>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Assembly"/>
+        <rdf:Description rdf:about="#Inventory"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:range>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#reportsTo">
+  <rdfs:domain rdf:resource="#Manager"/>
+  <rdfs:range rdf:resource="#Orchestrator"/>
+  <owl:inverseOf rdf:resource="#supervises"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#requiredBy">
+  <owl:inverseOf rdf:resource="#requires"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#requires"/>
+
+<owl:ObjectProperty rdf:about="#simulates">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdfs:domain>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasBehavior"/>
+      <owl:hasValue rdf:resource="#simulate"/>
+    </owl:Restriction>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#Simulation"/>
+  <rdfs:subPropertyOf rdf:resource="#behaves"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#simulationDependsOn"/>
+
+<owl:ObjectProperty rdf:about="#skillOf"/>
+
+<owl:ObjectProperty rdf:about="#supervises">
+  <rdfs:domain rdf:resource="#Orchestrator"/>
+  <rdfs:range rdf:resource="#Manager"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#taskDependsOn">
+  <rdfs:domain rdf:resource="#Task"/>
+  <rdfs:range>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Mission"/>
+        <rdf:Description rdf:about="#Task"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:range>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#triggers">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Behavior"/>
+  <rdfs:range rdf:resource="#Behavior"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#viewedBy">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdfs:domain rdf:resource="#TimeOfDay"/>
+  <rdfs:range rdf:resource="#Visual"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#behavior"/>
+
+<owl:DatatypeProperty rdf:about="#done">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Executable"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#life">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Part"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedInt"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#name_space">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:subPropertyOf rdf:resource="#sparql"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#params">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:subPropertyOf rdf:resource="#task"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#query">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:subPropertyOf rdf:resource="#sparql"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#sparql">
+  <rdfs:subPropertyOf rdf:resource="#task"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#task"/>
+
+<owl:DatatypeProperty rdf:about="#timeToComplete">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedInt"/>
+  <rdfs:subPropertyOf rdf:resource="#task"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#type">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Behavior"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#token"/>
+  <rdfs:subPropertyOf rdf:resource="#behavior"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#uri">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:subPropertyOf rdf:resource="#behavior"/>
+</owl:DatatypeProperty>
+
+<owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+
+<owl:Class rdf:about="#Action">
+  <rdfs:subClassOf rdf:resource="#DomainConstant"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#DomainConstant"/>
+        <owl:Class>
+          <owl:oneOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#ExcavateDrill"/>
+            <rdf:Description rdf:about="#ExcavateGrip"/>
+            <rdf:Description rdf:about="#Map"/>
+          </owl:oneOf>
+        </owl:Class>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Actor">
+  <rdfs:subClassOf rdf:resource="#DomainThings"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Arm">
+  <rdfs:subClassOf rdf:resource="#Assembly"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Assembly">
+  <rdfs:subClassOf rdf:resource="#DomainThings"/>
+</owl:Class>
+
+<owl:Class rdf:about="#BDBot">
+  <rdfs:subClassOf rdf:resource="#Bot"/>
+  <rdfs:subClassOf>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Bot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#BeltDrive"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdfs:subClassOf>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Bot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#BeltDrive"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#BDBotDay">
+  <rdfs:subClassOf rdf:resource="#BDBot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#BDBot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#DayCameraRig"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <owl:disjointWith rdf:resource="#BDBotNight"/>
+</owl:Class>
+
+<owl:Class rdf:about="#BDBotDriller">
+  <rdfs:subClassOf rdf:resource="#BDBot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#BDBot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#DrillerArm"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#BDBotDrillerDay">
+  <rdfs:subClassOf rdf:resource="#BDBotDriller"/>
+  <rdfs:subClassOf rdf:resource="#BDBotDay"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#BDBotDriller"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#DayCameraRig"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#BDBotDrillerNight">
+  <rdfs:subClassOf rdf:resource="#BDBotDriller"/>
+  <rdfs:subClassOf rdf:resource="#BDBotNight"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#BDBotDriller"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#NightCameraRig"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#BDBotNight">
+  <rdfs:subClassOf rdf:resource="#BDBot"/>
+  <rdfs:subClassOf>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#BDBot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#NightCameraRig"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdfs:subClassOf>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#BDBot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#NightCameraRig"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#BadAssembly">
+  <rdfs:subClassOf rdf:resource="#Assembly"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Assembly"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPart"/>
+          <owl:someValuesFrom rdf:resource="#BadPart"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#BadBot">
+  <rdfs:subClassOf rdf:resource="#Actor"/>
+  <rdfs:subClassOf rdf:resource="#Bot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Bot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#BadAssembly"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#BadPart"/>
+
+<owl:Class rdf:about="#Behavior"/>
+
+<owl:Class rdf:about="#Behaviour">
+  <rdfs:subClassOf rdf:resource="#DomainConstant"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Belt">
+  <rdfs:subClassOf rdf:resource="#Part"/>
+</owl:Class>
+
+<owl:Class rdf:about="#BeltDrive">
+  <rdfs:subClassOf rdf:resource="#Drive"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Drive"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPart"/>
+          <owl:onClass rdf:resource="#Belt"/>
+          <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPart"/>
+          <owl:onClass rdf:resource="#Motor"/>
+          <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSkill"/>
+      <owl:hasValue rdf:resource="#BeltDriveTransportation"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <owl:disjointWith rdf:resource="#FinDrive"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Bot">
+  <rdfs:subClassOf rdf:resource="#Actor"/>
+  <rdfs:subClassOf>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Actor"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#Assembly"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#BotTest">
+  <rdfs:subClassOf rdf:resource="#Bot"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Camera">
+  <rdfs:subClassOf rdf:resource="#Part"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Containable">
+  <rdfs:subClassOf rdf:resource="#DomainThings"/>
+</owl:Class>
+
+<owl:Class rdf:about="#DayCameraRig">
+  <rdfs:subClassOf rdf:resource="#VisionRig"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#VisionRig"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSkill"/>
+          <owl:hasValue rdf:resource="#DayVision"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPart"/>
+          <owl:onClass rdf:resource="#Camera"/>
+          <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <owl:disjointWith rdf:resource="#NightCameraRig"/>
+</owl:Class>
+
+<owl:Class rdf:about="#DomainConstant">
+  <rdfs:subClassOf rdf:resource="#PlanetryExplorationDomain"/>
+</owl:Class>
+
+<owl:Class rdf:about="#DomainThings">
+  <rdfs:subClassOf rdf:resource="#PlanetryExplorationDomain"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Drill">
+  <rdfs:subClassOf rdf:resource="#Part"/>
+</owl:Class>
+
+<owl:Class rdf:about="#DrillerArm">
+  <rdfs:subClassOf rdf:resource="#Arm"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Arm"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPart"/>
+          <owl:someValuesFrom rdf:resource="#Drill"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPart"/>
+          <owl:someValuesFrom rdf:resource="#Link"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPart"/>
+          <owl:someValuesFrom rdf:resource="#Motor"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSkill"/>
+          <owl:hasValue rdf:resource="#RockyTerainExcavation"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Drilling">
+  <rdfs:subClassOf rdf:resource="#Excavation"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Excavation"/>
+        <owl:Class>
+          <owl:oneOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#FlatTerrainExcavation"/>
+            <rdf:Description rdf:about="#RockyTerainExcavation"/>
+          </owl:oneOf>
+        </owl:Class>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#requiredBy"/>
+          <owl:hasValue rdf:resource="#ExcavateDrill"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Drive">
+  <rdfs:subClassOf rdf:resource="#Assembly"/>
+  <rdfs:subClassOf>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Assembly"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSkill"/>
+          <owl:someValuesFrom rdf:resource="#Transportation"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdfs:subClassOf>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Assembly"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSkill"/>
+          <owl:someValuesFrom rdf:resource="#Transportation"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#DriverBot">
+  <rdfs:subClassOf rdf:resource="#Bot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Bot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#FourWheelDrive"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#DriverBotDay">
+  <rdfs:subClassOf rdf:resource="#DriverBot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#DriverBot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#DayCameraRig"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <owl:disjointWith rdf:resource="#DriverBotNight"/>
+</owl:Class>
+
+<owl:Class rdf:about="#DriverBotDriller">
+  <rdfs:subClassOf rdf:resource="#DriverBot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#DriverBot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#DrillerArm"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#DriverBotDrillerDay">
+  <rdfs:subClassOf rdf:resource="#DriverBotDriller"/>
+  <rdfs:subClassOf rdf:resource="#DriverBotDay"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#DriverBotDriller"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#DayCameraRig"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#DriverBotDrillerNight">
+  <rdfs:subClassOf rdf:resource="#DriverBotDriller"/>
+  <rdfs:subClassOf rdf:resource="#DriverBotNight"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#DriverBotDriller"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#NightCameraRig"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#DriverBotNight">
+  <rdfs:subClassOf rdf:resource="#DriverBot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#DriverBot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#NightCameraRig"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Excavation">
+  <rdfs:subClassOf rdf:resource="#Skill"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Executable">
+  <rdfs:subClassOf rdf:resource="#DomainThings"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Factory">
+  <rdfs:subClassOf rdf:resource="#Containable"/>
+</owl:Class>
+
+<owl:Class rdf:about="#FactoryManager">
+  <rdfs:subClassOf rdf:resource="#Manager"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#createsAssembly"/>
+          <owl:someValuesFrom rdf:resource="#Assembly"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#createsBot"/>
+          <owl:someValuesFrom rdf:resource="#Bot"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:oneOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#factoryManager"/>
+      </owl:oneOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Fin">
+  <rdfs:subClassOf rdf:resource="#Part"/>
+</owl:Class>
+
+<owl:Class rdf:about="#FinBot">
+  <rdfs:subClassOf rdf:resource="#Bot"/>
+  <rdfs:subClassOf>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Bot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#FinDrive"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdfs:subClassOf>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Bot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#FinDrive"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#FinBotDay">
+  <rdfs:subClassOf rdf:resource="#FinBot"/>
+  <rdfs:subClassOf>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#FinBot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#DayCameraRig"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdfs:subClassOf>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#FinBot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#DayCameraRig"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <owl:disjointWith rdf:resource="#FinBotNight"/>
+</owl:Class>
+
+<owl:Class rdf:about="#FinBotNight">
+  <rdfs:subClassOf rdf:resource="#FinBot"/>
+  <rdfs:subClassOf>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#FinBot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#NightCameraRig"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdfs:subClassOf>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#FinBot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#NightCameraRig"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#FinDrive">
+  <rdfs:subClassOf rdf:resource="#Drive"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Drive"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPart"/>
+          <owl:someValuesFrom rdf:resource="#Fin"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPart"/>
+          <owl:someValuesFrom rdf:resource="#Link"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPart"/>
+          <owl:someValuesFrom rdf:resource="#Motor"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSkill"/>
+          <owl:hasValue rdf:resource="#FinDriveTransportation"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#FourWheelDrive">
+  <rdfs:subClassOf rdf:resource="#Drive"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Drive"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPart"/>
+          <owl:someValuesFrom rdf:resource="#Motor"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPart"/>
+          <owl:someValuesFrom rdf:resource="#Wheel"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSkill"/>
+          <owl:hasValue rdf:resource="#FourWheelDriveTransportation"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Gripper">
+  <rdfs:subClassOf rdf:resource="#Part"/>
+</owl:Class>
+
+<owl:Class rdf:about="#GripperArm">
+  <rdfs:subClassOf rdf:resource="#Arm"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Arm"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSkill"/>
+          <owl:someValuesFrom rdf:resource="#Gripping"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPart"/>
+          <owl:onClass rdf:resource="#Gripper"/>
+          <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPart"/>
+          <owl:onClass rdf:resource="#Link"/>
+          <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPart"/>
+          <owl:onClass rdf:resource="#Motor"/>
+          <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:qualifiedCardinality>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Gripping">
+  <rdfs:subClassOf rdf:resource="#Excavation"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Excavation"/>
+        <owl:Class>
+          <owl:oneOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#GrippingExcavation"/>
+          </owl:oneOf>
+        </owl:Class>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#actsOn"/>
+          <owl:hasValue rdf:resource="#FlatTerrain"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#actsOn"/>
+          <owl:hasValue rdf:resource="#RockyTerrain"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#requiredBy"/>
+          <owl:hasValue rdf:resource="#ExcavateGrip"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Inventory">
+  <rdfs:subClassOf rdf:resource="#Containable"/>
+</owl:Class>
+
+<owl:Class rdf:about="#InventoryManager">
+  <rdfs:subClassOf rdf:resource="#Manager"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:oneOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#inventoryManager"/>
+      </owl:oneOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#fetchesParts"/>
+      <owl:someValuesFrom rdf:resource="#Part"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Link">
+  <rdfs:subClassOf rdf:resource="#Part"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Manager">
+  <rdfs:subClassOf rdf:resource="#Actor"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Mission">
+  <rdfs:subClassOf rdf:resource="#Executable"/>
+  <owl:disjointWith rdf:resource="#Task"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Motor">
+  <rdfs:subClassOf rdf:resource="#Part"/>
+</owl:Class>
+
+<owl:Class rdf:about="#NightCameraRig">
+  <rdfs:subClassOf rdf:resource="#VisionRig"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#VisionRig"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPart"/>
+          <owl:someValuesFrom rdf:resource="#Camera"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSkill"/>
+          <owl:hasValue rdf:resource="#NightVision"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Orchestrator">
+  <rdfs:subClassOf rdf:resource="#Actor"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ParkingLot">
+  <rdfs:subClassOf rdf:resource="#Containable"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ParkingLotManager">
+  <rdfs:subClassOf rdf:resource="#Manager"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#diagnosesHealthOf"/>
+      <owl:someValuesFrom rdf:resource="#Bot"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Part">
+  <rdfs:subClassOf rdf:resource="#DomainThings"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PlanetryExplorationDomain"/>
+
+<owl:Class rdf:about="#Quality">
+  <rdfs:subClassOf rdf:resource="#DomainConstant"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#DomainConstant"/>
+        <owl:Class>
+          <owl:oneOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#bad"/>
+            <rdf:Description rdf:about="#good"/>
+          </owl:oneOf>
+        </owl:Class>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#RockerBogie">
+  <rdfs:subClassOf rdf:resource="#Drive"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Drive"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPart"/>
+          <owl:someValuesFrom rdf:resource="#Link"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPart"/>
+          <owl:someValuesFrom rdf:resource="#Motor"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasPart"/>
+          <owl:someValuesFrom rdf:resource="#Wheel"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSkill"/>
+          <owl:hasValue rdf:resource="#RockerBogieTransportation"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#RockerBogieBot">
+  <rdfs:subClassOf rdf:resource="#Bot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Bot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#RockerBogie"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#RockerBogieBotDay">
+  <rdfs:subClassOf rdf:resource="#RockerBogieBot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#RockerBogieBot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#DayCameraRig"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#RockerBogieBotDriller">
+  <rdfs:subClassOf rdf:resource="#RockerBogieBot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#RockerBogieBot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#DrillerArm"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#RockerBogieBotDrillerDay">
+  <rdfs:subClassOf rdf:resource="#RockerBogieBotDay"/>
+  <rdfs:subClassOf rdf:resource="#RockerBogieBotDriller"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#RockerBogieBotDriller"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#DayCameraRig"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#RockerBogieBotDrillerNight">
+  <rdfs:subClassOf rdf:resource="#RockerBogieBotDriller"/>
+  <rdfs:subClassOf rdf:resource="#RockerBogieBotNight"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#RockerBogieBotDriller"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#NightCameraRig"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#RockerBogieBotGripper">
+  <rdfs:subClassOf rdf:resource="#RockerBogieBot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#RockerBogieBot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#GripperArm"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#RockerBogieBotGripperDay">
+  <rdfs:subClassOf rdf:resource="#RockerBogieBotDay"/>
+  <rdfs:subClassOf rdf:resource="#RockerBogieBotGripper"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#RockerBogieBotGripper"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#DayCameraRig"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#RockerBogieBotGripperNight">
+  <rdfs:subClassOf rdf:resource="#RockerBogieBotGripper"/>
+  <rdfs:subClassOf rdf:resource="#RockerBogieBotNight"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#RockerBogieBotGripper"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#NightCameraRig"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#RockerBogieBotNight">
+  <rdfs:subClassOf rdf:resource="#RockerBogieBot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#RockerBogieBot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasAssembly"/>
+          <owl:someValuesFrom rdf:resource="#NightCameraRig"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Simulation"/>
+
+<owl:Class rdf:about="#Simulator">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <owl:Class>
+          <owl:oneOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#simulator"/>
+          </owl:oneOf>
+        </owl:Class>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#simulates"/>
+          <owl:someValuesFrom rdf:resource="#Simulation"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasBehavior"/>
+          <owl:hasValue rdf:resource="#simulate"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Skill">
+  <rdfs:subClassOf rdf:resource="#DomainConstant"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Task">
+  <rdfs:subClassOf rdf:resource="#Executable"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Terrain">
+  <rdfs:subClassOf rdf:resource="#DomainConstant"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#DomainConstant"/>
+        <owl:Class>
+          <owl:oneOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#FlatTerrain"/>
+            <rdf:Description rdf:about="#RockyTerrain"/>
+            <rdf:Description rdf:about="#SandyTerrain"/>
+            <rdf:Description rdf:about="#WaterTerrain"/>
+          </owl:oneOf>
+        </owl:Class>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#TimeOfDay">
+  <rdfs:subClassOf rdf:resource="#DomainConstant"/>
+  <rdfs:subClassOf>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#DomainConstant"/>
+        <owl:Class>
+          <owl:oneOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#Day"/>
+            <rdf:Description rdf:about="#Night"/>
+          </owl:oneOf>
+        </owl:Class>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdfs:subClassOf>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#DomainConstant"/>
+        <owl:Class>
+          <owl:oneOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#Day"/>
+            <rdf:Description rdf:about="#Night"/>
+          </owl:oneOf>
+        </owl:Class>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Transportation">
+  <rdfs:subClassOf rdf:resource="#Skill"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Skill"/>
+        <owl:Class>
+          <owl:oneOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#BeltDriveTransportation"/>
+            <rdf:Description rdf:about="#FinDriveTransportation"/>
+            <rdf:Description rdf:about="#FourWheelDriveTransportation"/>
+            <rdf:Description rdf:about="#RockerBogieTransportation"/>
+          </owl:oneOf>
+        </owl:Class>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#requiredBy"/>
+          <owl:hasValue rdf:resource="#Map"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#VisionRig">
+  <rdfs:subClassOf rdf:resource="#Assembly"/>
+  <rdfs:subClassOf>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Assembly"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSkill"/>
+          <owl:someValuesFrom rdf:resource="#Visual"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdfs:subClassOf>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Assembly"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSkill"/>
+          <owl:someValuesFrom rdf:resource="#Visual"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Visual">
+  <rdfs:subClassOf rdf:resource="#Skill"/>
+  <rdfs:subClassOf>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Skill"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#canViewIn"/>
+          <owl:someValuesFrom rdf:resource="#TimeOfDay"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdfs:subClassOf>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Skill"/>
+        <owl:Class>
+          <owl:oneOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#DayVision"/>
+            <rdf:Description rdf:about="#NightVision"/>
+          </owl:oneOf>
+        </owl:Class>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#canViewIn"/>
+          <owl:someValuesFrom rdf:resource="#TimeOfDay"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Wheel">
+  <rdfs:subClassOf rdf:resource="#Part"/>
+</owl:Class>
+
+<DomainConstant rdf:about="#BeltDriveTransportation">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Skill"/>
+  <rdf:type rdf:resource="#Transportation"/>
+  <rdf:type>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Skill"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#requiredBy"/>
+          <owl:hasValue rdf:resource="#Map"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdf:type>
+  <rdf:type>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Transportation"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#actsOn"/>
+          <owl:hasValue rdf:resource="#RockyTerrain"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdf:type>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#actsOn"/>
+      <owl:hasValue rdf:resource="#RockyTerrain"/>
+    </owl:Restriction>
+  </rdf:type>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#requiredBy"/>
+      <owl:hasValue rdf:resource="#Map"/>
+    </owl:Restriction>
+  </rdf:type>
+  <actsOn rdf:resource="#RockyTerrain"/>
+  <requiredBy rdf:resource="#Map"/>
+  <skillOf rdf:resource="#beltdrive1"/>
+</DomainConstant>
+
+<DomainConstant rdf:about="#Day">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#TimeOfDay"/>
+  <rdf:type>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#DomainConstant"/>
+        <owl:Class>
+          <owl:oneOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#Day"/>
+            <rdf:Description rdf:about="#Night"/>
+          </owl:oneOf>
+        </owl:Class>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdf:type>
+  <rdf:type>
+    <owl:Class>
+      <owl:oneOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Day"/>
+        <rdf:Description rdf:about="#Night"/>
+      </owl:oneOf>
+    </owl:Class>
+  </rdf:type>
+  <viewedBy rdf:resource="#DayVision"/>
+</DomainConstant>
+
+<DomainConstant rdf:about="#DayVision">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Skill"/>
+  <rdf:type rdf:resource="#Visual"/>
+  <rdf:type>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Skill"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#canViewIn"/>
+          <owl:someValuesFrom rdf:resource="#TimeOfDay"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdf:type>
+  <rdf:type>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Visual"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#canViewIn"/>
+          <owl:hasValue rdf:resource="#Day"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdf:type>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#canViewIn"/>
+      <owl:someValuesFrom rdf:resource="#TimeOfDay"/>
+    </owl:Restriction>
+  </rdf:type>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#canViewIn"/>
+      <owl:hasValue rdf:resource="#Day"/>
+    </owl:Restriction>
+  </rdf:type>
+  <canViewIn rdf:resource="#Day"/>
+  <skillOf rdf:resource="#daycamerarig1"/>
+</DomainConstant>
+
+<Action rdf:about="#ExcavateDrill">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <requires rdf:resource="#FlatTerrainExcavation"/>
+  <requires rdf:resource="#RockyTerainExcavation"/>
+</Action>
+
+<Action rdf:about="#ExcavateGrip">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <requires rdf:resource="#GrippingExcavation"/>
+</Action>
+
+<DomainConstant rdf:about="#FinDriveTransportation">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Skill"/>
+  <rdf:type rdf:resource="#Transportation"/>
+  <rdf:type>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Skill"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#requiredBy"/>
+          <owl:hasValue rdf:resource="#Map"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdf:type>
+  <rdf:type>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Transportation"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#actsOn"/>
+          <owl:hasValue rdf:resource="#WaterTerrain"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdf:type>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#actsOn"/>
+      <owl:hasValue rdf:resource="#WaterTerrain"/>
+    </owl:Restriction>
+  </rdf:type>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#requiredBy"/>
+      <owl:hasValue rdf:resource="#Map"/>
+    </owl:Restriction>
+  </rdf:type>
+  <actsOn rdf:resource="#WaterTerrain"/>
+  <requiredBy rdf:resource="#Map"/>
+</DomainConstant>
+
+<Terrain rdf:about="#FlatTerrain">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <actedUponBy rdf:resource="#GrippingExcavation"/>
+</Terrain>
+
+<Drilling rdf:about="#FlatTerrainExcavation">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <actsOn rdf:resource="#FlatTerrain"/>
+  <requiredBy rdf:resource="#ExcavateDrill"/>
+</Drilling>
+
+<Transportation rdf:about="#FourWheelDriveTransportation">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <actsOn rdf:resource="#FlatTerrain"/>
+  <requiredBy rdf:resource="#Map"/>
+</Transportation>
+
+<Gripping rdf:about="#GrippingExcavation">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <actsOn rdf:resource="#FlatTerrain"/>
+  <actsOn rdf:resource="#RockyTerrain"/>
+  <requiredBy rdf:resource="#ExcavateGrip"/>
+</Gripping>
+
+<Action rdf:about="#Map">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#DomainConstant"/>
+  <requires rdf:resource="#BeltDriveTransportation"/>
+  <requires rdf:resource="#FinDriveTransportation"/>
+  <requires rdf:resource="#FourWheelDriveTransportation"/>
+  <requires rdf:resource="#RockerBogieTransportation"/>
+</Action>
+
+<Orchestrator rdf:about="#MotherShip">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <supervises rdf:resource="#inventoryManager"/>
+  <supervises rdf:resource="#parkingLotManager"/>
+</Orchestrator>
+
+<DomainConstant rdf:about="#Night">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#TimeOfDay"/>
+  <rdf:type>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#DomainConstant"/>
+        <owl:Class>
+          <owl:oneOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#Day"/>
+            <rdf:Description rdf:about="#Night"/>
+          </owl:oneOf>
+        </owl:Class>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdf:type>
+  <rdf:type>
+    <owl:Class>
+      <owl:oneOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Day"/>
+        <rdf:Description rdf:about="#Night"/>
+      </owl:oneOf>
+    </owl:Class>
+  </rdf:type>
+  <viewedBy rdf:resource="#NightVision"/>
+</DomainConstant>
+
+<DomainConstant rdf:about="#NightVision">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Skill"/>
+  <rdf:type rdf:resource="#Visual"/>
+  <rdf:type>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Skill"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#canViewIn"/>
+          <owl:someValuesFrom rdf:resource="#TimeOfDay"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdf:type>
+  <rdf:type>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Visual"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#canViewIn"/>
+          <owl:hasValue rdf:resource="#Night"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdf:type>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#canViewIn"/>
+      <owl:someValuesFrom rdf:resource="#TimeOfDay"/>
+    </owl:Restriction>
+  </rdf:type>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#canViewIn"/>
+      <owl:hasValue rdf:resource="#Night"/>
+    </owl:Restriction>
+  </rdf:type>
+  <canViewIn rdf:resource="#Night"/>
+</DomainConstant>
+
+<Transportation rdf:about="#RockerBogieTransportation">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <actsOn rdf:resource="#FlatTerrain"/>
+  <actsOn rdf:resource="#RockyTerrain"/>
+  <actsOn rdf:resource="#SandyTerrain"/>
+  <requiredBy rdf:resource="#Map"/>
+</Transportation>
+
+<Drilling rdf:about="#RockyTerainExcavation">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <actsOn rdf:resource="#RockyTerrain"/>
+  <requiredBy rdf:resource="#ExcavateDrill"/>
+  <skillOf rdf:resource="#drillerarm1"/>
+</Drilling>
+
+<DomainConstant rdf:about="#RockyTerrain">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Terrain"/>
+  <rdf:type>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#DomainConstant"/>
+        <owl:Class>
+          <owl:oneOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#RockyTerrain"/>
+            <rdf:Description rdf:about="#WaterTerrain"/>
+          </owl:oneOf>
+        </owl:Class>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdf:type>
+  <rdf:type>
+    <owl:Class>
+      <owl:oneOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#RockyTerrain"/>
+        <rdf:Description rdf:about="#WaterTerrain"/>
+      </owl:oneOf>
+    </owl:Class>
+  </rdf:type>
+  <actedUponBy rdf:resource="#GrippingExcavation"/>
+</DomainConstant>
+
+<Terrain rdf:about="#SandyTerrain">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Terrain>
+
+<DomainConstant rdf:about="#WaterTerrain">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Terrain"/>
+  <rdf:type>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#DomainConstant"/>
+        <owl:Class>
+          <owl:oneOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#RockyTerrain"/>
+            <rdf:Description rdf:about="#WaterTerrain"/>
+          </owl:oneOf>
+        </owl:Class>
+      </owl:intersectionOf>
+    </owl:Class>
+  </rdf:type>
+  <rdf:type>
+    <owl:Class>
+      <owl:oneOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#RockyTerrain"/>
+        <rdf:Description rdf:about="#WaterTerrain"/>
+      </owl:oneOf>
+    </owl:Class>
+  </rdf:type>
+  <actedUponBy rdf:resource="#FinDriveTransportation"/>
+</DomainConstant>
+
+<Behavior rdf:about="#addToInventory">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <behavior rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">api://collab_bot/behavior/addToContainable</behavior>
+  <behavior rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</behavior>
+  <type rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</type>
+  <uri>api://collab_bot/behavior/addToContainable</uri>
+</Behavior>
+
+<Behavior rdf:about="#addToParkingLot">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <triggers rdf:resource="#diagnose_health"/>
+  <behavior rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">api://collab_bot/behavior/addToContainable</behavior>
+  <behavior rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</behavior>
+  <type>api</type>
+  <uri>api://collab_bot/behavior/addToContainable</uri>
+</Behavior>
+
+<Behavior rdf:about="#allocateToAgent">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <triggers rdf:resource="#performTask"/>
+  <behavior rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">api://collab_bot/behavior/allocate_to_agent</behavior>
+  <behavior rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</behavior>
+  <type>api</type>
+  <uri>api://collab_bot/behavior/allocate_to_agent</uri>
+</Behavior>
+
+<Behavior rdf:about="#assignExecutable">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <triggers rdf:resource="#execute"/>
+  <behavior rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">api://collab_bot/behavior/assignExecutable</behavior>
+  <behavior rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</behavior>
+  <type rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</type>
+  <uri>api://collab_bot/behavior/assignExecutable</uri>
+</Behavior>
+
+<Quality rdf:about="#bad">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Quality>
+
+<Belt rdf:about="#belt1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <partOf rdf:resource="#beltdrive1"/>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">50</life>
+</Belt>
+
+<Belt rdf:about="#belt2">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <partOf rdf:resource="#beltdrive1"/>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">50</life>
+</Belt>
+
+<Camera rdf:about="#camera1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <partOf rdf:resource="#daycamerarig1"/>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">100</life>
+</Camera>
+
+<Behavior rdf:about="#createAssembly">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <triggers rdf:resource="#addToInventory"/>
+  <behavior rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">api://collab_bot/behavior/createAssembly</behavior>
+  <behavior rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</behavior>
+  <type rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</type>
+  <uri>api://collab_bot/behavior/createAssembly</uri>
+</Behavior>
+
+<Behavior rdf:about="#createBot">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <triggers rdf:resource="#addToParkingLot"/>
+  <behavior rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">api://collab_bot/behavior/createBot</behavior>
+  <behavior rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</behavior>
+  <type>api</type>
+  <uri>api://collab_bot/behavior/createBot</uri>
+</Behavior>
+
+<Behavior rdf:about="#diagnose_health">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Behavior>
+
+<Drill rdf:about="#drill1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <partOf rdf:resource="#drillerarm1"/>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">10</life>
+</Drill>
+
+<Behavior rdf:about="#execute">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <triggers rdf:resource="#perform"/>
+  <behavior rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api://collab_bot/behavior/execute</behavior>
+  <behavior rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</behavior>
+  <type rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</type>
+  <uri rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api://collab_bot/behavior/execute</uri>
+</Behavior>
+
+<Factory rdf:about="#factory">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Factory>
+
+<FactoryManager rdf:about="#factoryManager">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasBehavior rdf:resource="#createBot"/>
+  <hasBehavior rdf:resource="#createAssembly"/>
+  <manages rdf:resource="#factory"/>
+</FactoryManager>
+
+<Behavior rdf:about="#fetchAssemblies">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <behavior rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">api://collab_bot/behavior/fetchAssemblies</behavior>
+  <behavior rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</behavior>
+  <type>api</type>
+  <uri>api://collab_bot/behavior/fetchAssemblies</uri>
+</Behavior>
+
+<Behavior rdf:about="#fetchBot">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <behavior rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">api://collab_bot/behavior/fetchBot</behavior>
+  <behavior rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</behavior>
+  <type>api</type>
+  <uri>api://collab_bot/behavior/fetchBot</uri>
+</Behavior>
+
+<Behavior rdf:about="#fetchParts">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <behavior rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">api://collab_bot/behavior/fetchParts</behavior>
+  <behavior rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</behavior>
+  <type>api</type>
+  <uri>api://collab_bot/behavior/fetchParts</uri>
+</Behavior>
+
+<Quality rdf:about="#good">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Quality>
+
+<Gripper rdf:about="#gripper1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <partOf rdf:resource="#inventory"/>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">50</life>
+</Gripper>
+
+<Inventory rdf:about="#inventory">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Inventory>
+
+<InventoryManager rdf:about="#inventoryManager">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasBehavior rdf:resource="#fetchParts"/>
+  <manages rdf:resource="#inventory"/>
+</InventoryManager>
+
+<Link rdf:about="#link1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <partOf rdf:resource="#drillerarm1"/>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">100</life>
+</Link>
+
+<Link rdf:about="#link2">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <partOf rdf:resource="#drillerarm1"/>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">100</life>
+</Link>
+
+<Link rdf:about="#link3">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <partOf rdf:resource="#inventory"/>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">100</life>
+</Link>
+
+<Link rdf:about="#link4">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <partOf rdf:resource="#inventory"/>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">100</life>
+</Link>
+
+<Mission rdf:about="#mission_create_bd_bot_driller_day">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#MotherShip"/>
+  <definedBy rdf:resource="#execute"/>
+  <hasNextTask rdf:resource="#task_provide_belt_drive_parts"/>
+  <hasNextTask rdf:resource="#task_provide_day_camera_parts"/>
+  <hasNextTask rdf:resource="#task_provide_driller_arm_parts"/>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</timeToComplete>
+</Mission>
+
+<Mission rdf:about="#mission_create_gripper_arm">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#MotherShip"/>
+  <definedBy rdf:resource="#execute"/>
+  <hasTask rdf:resource="#task_provide_gripper_arm_parts"/>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">2</timeToComplete>
+</Mission>
+
+<Mission rdf:about="#mission_waste_some_time">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#MotherShip"/>
+  <definedBy rdf:resource="#execute"/>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</timeToComplete>
+</Mission>
+
+<Motor rdf:about="#motor1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <partOf rdf:resource="#beltdrive1"/>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">50</life>
+</Motor>
+
+<Motor rdf:about="#motor2">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <partOf rdf:resource="#beltdrive1"/>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">50</life>
+</Motor>
+
+<Motor rdf:about="#motor3">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <partOf rdf:resource="#drillerarm1"/>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">50</life>
+</Motor>
+
+<Motor rdf:about="#motor4">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <partOf rdf:resource="#drillerarm1"/>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">50</life>
+</Motor>
+
+<Motor rdf:about="#motor5">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <partOf rdf:resource="#inventory"/>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">50</life>
+</Motor>
+
+<Motor rdf:about="#motor6">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <partOf rdf:resource="#inventory"/>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">50</life>
+</Motor>
+
+<Motor rdf:about="#motor7">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <partOf rdf:resource="#inventory"/>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">50</life>
+</Motor>
+
+<Motor rdf:about="#motor8">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <partOf rdf:resource="#inventory"/>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">50</life>
+</Motor>
+
+<Motor rdf:about="#motor9">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <partOf rdf:resource="#inventory"/>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">50</life>
+</Motor>
+
+<ParkingLot rdf:about="#parkingLot">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</ParkingLot>
+
+<ParkingLotManager rdf:about="#parkingLotManager">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <manages rdf:resource="#parkingLot"/>
+</ParkingLotManager>
+
+<Behavior rdf:about="#perform">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <behavior rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api://collab_bot/behavior/perform</behavior>
+  <behavior rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</behavior>
+  <type rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</type>
+  <uri rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api://collab_bot/behavior/perform</uri>
+</Behavior>
+
+<Behavior rdf:about="#performTask">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <behavior rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">api://collab_bot/behavior/perform_allocated_task</behavior>
+  <behavior rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</behavior>
+  <type>api</type>
+  <uri>api://collab_bot/behavior/perform_allocated_task</uri>
+</Behavior>
+
+<Behavior rdf:about="#returnToBase">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <behavior rdf:datatype="http://www.w3.org/2001/XMLSchema#token">none</behavior>
+  <type rdf:datatype="http://www.w3.org/2001/XMLSchema#token">none</type>
+</Behavior>
+
+<Behavior rdf:about="#simulate">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <triggers rdf:resource="#assignExecutable"/>
+  <behavior rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">api://collab_bot/behavior/simulate</behavior>
+  <behavior rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</behavior>
+  <type rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</type>
+  <uri>api://collab_bot/behavior/simulate</uri>
+</Behavior>
+
+<Simulation rdf:about="#simulation_create_BDBotDrillerDay">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasMissions rdf:resource="#mission_create_bd_bot_driller_day"/>
+  <hasSimulation rdf:resource="#simulation_create_gripper_arm_assembly"/>
+</Simulation>
+
+<Simulation rdf:about="#simulation_create_gripper_arm_assembly">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasMissions rdf:resource="#mission_create_gripper_arm"/>
+</Simulation>
+
+<Simulation rdf:about="#simulation_dummy">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasMissions rdf:resource="#mission_waste_some_time"/>
+</Simulation>
+
+<Simulator rdf:about="#simulator">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <behaves rdf:resource="#simulation_create_BDBotDrillerDay"/>
+  <behaves rdf:resource="#simulation_dummy"/>
+  <hasBehavior rdf:resource="#simulate"/>
+  <simulates rdf:resource="#simulation_create_BDBotDrillerDay"/>
+  <simulates rdf:resource="#simulation_dummy"/>
+</Simulator>
+
+<Task rdf:about="#task_add_bd_bot_to_parking_lot">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#parkingLotManager"/>
+  <definedBy rdf:resource="#addToParkingLot"/>
+  <hasNextTask rdf:resource="#task_provide_required_bot"/>
+  <done rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</done>
+  <params>isAvailableIn</params>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">isAvailableIn</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</timeToComplete>
+</Task>
+
+<Task rdf:about="#task_add_belt_drive_to_inventory">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#inventoryManager"/>
+  <definedBy rdf:resource="#addToInventory"/>
+  <hasNextTask rdf:resource="#task_provide_bd_bot_assemblies"/>
+  <done rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</done>
+  <params>assemblyOf</params>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">assemblyOf</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</timeToComplete>
+</Task>
+
+<Task rdf:about="#task_add_day_camera_to_inventory">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#inventoryManager"/>
+  <definedBy rdf:resource="#addToInventory"/>
+  <hasNextTask rdf:resource="#task_provide_bd_bot_assemblies"/>
+  <done rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</done>
+  <params>assemblyOf</params>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">assemblyOf</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</timeToComplete>
+</Task>
+
+<Task rdf:about="#task_add_driller_arm_to_inventory">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#inventoryManager"/>
+  <definedBy rdf:resource="#addToInventory"/>
+  <hasNextTask rdf:resource="#task_provide_bd_bot_assemblies"/>
+  <done rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</done>
+  <params>assemblyOf</params>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">assemblyOf</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</timeToComplete>
+</Task>
+
+<Task rdf:about="#task_add_gripper_arm_to_inventory">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#inventoryManager"/>
+  <definedBy rdf:resource="#addToInventory"/>
+  <params>assemblyOf</params>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">assemblyOf</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</timeToComplete>
+</Task>
+
+<Task rdf:about="#task_agent_return_to_parking_lot">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#parkingLotManager"/>
+  <definedBy rdf:resource="#addToParkingLot"/>
+  <params>isAvailableIn</params>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">isAvailableIn</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">2</timeToComplete>
+</Task>
+
+<Task rdf:about="#task_assign_agent_drilling">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#parkingLotManager"/>
+  <definedBy rdf:resource="#allocateToAgent"/>
+  <hasNextTask rdf:resource="#task_perform_drilling"/>
+  <done rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</done>
+  <params>isAvailableIn</params>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">isAvailableIn</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</timeToComplete>
+</Task>
+
+<Task rdf:about="#task_build_assembly_belt_drive">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#factoryManager"/>
+  <definedBy rdf:resource="#createAssembly"/>
+  <hasNextTask rdf:resource="#task_add_belt_drive_to_inventory"/>
+  <done rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</done>
+  <params rdf:datatype="http://www.w3.org/2001/XMLSchema#token">BeltDrive</params>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">3</task>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#token">BeltDrive</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">3</timeToComplete>
+</Task>
+
+<Task rdf:about="#task_build_assembly_day_camera">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#factoryManager"/>
+  <definedBy rdf:resource="#createAssembly"/>
+  <hasNextTask rdf:resource="#task_add_day_camera_to_inventory"/>
+  <done rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</done>
+  <params>DayCameraRig</params>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">3</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">DayCameraRig</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">3</timeToComplete>
+</Task>
+
+<Task rdf:about="#task_build_assembly_driller_arm">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#factoryManager"/>
+  <definedBy rdf:resource="#createAssembly"/>
+  <hasNextTask rdf:resource="#task_add_driller_arm_to_inventory"/>
+  <done rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</done>
+  <params>DrillerArm</params>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">3</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">DrillerArm</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">3</timeToComplete>
+</Task>
+
+<Task rdf:about="#task_build_assembly_gripper_arm">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#factoryManager"/>
+  <definedBy rdf:resource="#createAssembly"/>
+  <params>GripperArm</params>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">3</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">GripperArm</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">3</timeToComplete>
+</Task>
+
+<Task rdf:about="#task_build_bd_bot_day">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#factoryManager"/>
+  <definedBy rdf:resource="#createBot"/>
+  <hasNextTask rdf:resource="#task_add_bd_bot_to_parking_lot"/>
+  <done rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</done>
+  <params>BDBotDrillerDay</params>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">3</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">BDBotDrillerDay</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">3</timeToComplete>
+</Task>
+
+<Task rdf:about="#task_perform_drilling">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#bdbotdrillerday1"/>
+  <definedBy rdf:resource="#performTask"/>
+  <hasNextTask rdf:resource="#task_agent_return_to_parking_lot"/>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">10</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">10</timeToComplete>
+</Task>
+
+<Task rdf:about="#task_provide_bd_bot_assemblies">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#inventoryManager"/>
+  <definedBy rdf:resource="#fetchAssemblies"/>
+  <hasNextTask rdf:resource="#task_build_bd_bot_day"/>
+  <done rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</done>
+  <name_space>kb</name_space>
+  <query>SELECT ?assembly WHERE {   ?assembly rdf:type kb:BeltDrive .    ?assembly kb:assemblyOf kb:inventory} LIMIT 1</query>
+  <query>SELECT ?assembly WHERE {   ?assembly rdf:type kb:DayCameraRig .    ?assembly kb:assemblyOf kb:inventory} LIMIT 1</query>
+  <query>SELECT ?assembly WHERE {   ?assembly rdf:type kb:DrillerArm .    ?assembly kb:assemblyOf kb:inventory} LIMIT 1</query>
+  <sparql rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">kb</sparql>
+  <sparql rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?assembly WHERE {   ?assembly rdf:type kb:DrillerArm .    ?assembly kb:assemblyOf kb:inventory} LIMIT 1</sparql>
+  <sparql rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?assembly WHERE {   ?assembly rdf:type kb:BeltDrive .    ?assembly kb:assemblyOf kb:inventory} LIMIT 1</sparql>
+  <sparql rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?assembly WHERE {   ?assembly rdf:type kb:DayCameraRig .    ?assembly kb:assemblyOf kb:inventory} LIMIT 1</sparql>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">kb</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?assembly WHERE {   ?assembly rdf:type kb:DrillerArm .    ?assembly kb:assemblyOf kb:inventory} LIMIT 1</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?assembly WHERE {   ?assembly rdf:type kb:BeltDrive .    ?assembly kb:assemblyOf kb:inventory} LIMIT 1</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?assembly WHERE {   ?assembly rdf:type kb:DayCameraRig .    ?assembly kb:assemblyOf kb:inventory} LIMIT 1</task>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">7</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">7</timeToComplete>
+</Task>
+
+<Task rdf:about="#task_provide_belt_drive_parts">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#inventoryManager"/>
+  <definedBy rdf:resource="#fetchParts"/>
+  <hasNextTask rdf:resource="#task_build_assembly_belt_drive"/>
+  <done rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</done>
+  <name_space>kb</name_space>
+  <query>SELECT ?part WHERE {   ?part rdf:type kb:Belt .   kb:inventory kb:hasPart ?part} LIMIT 2</query>
+  <query>SELECT ?part WHERE {   ?part rdf:type kb:Motor .   kb:inventory kb:hasPart ?part} LIMIT 2</query>
+  <sparql rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?part WHERE {   ?part rdf:type kb:Motor .   kb:inventory kb:hasPart ?part} LIMIT 2</sparql>
+  <sparql rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?part WHERE {   ?part rdf:type kb:Belt .   kb:inventory kb:hasPart ?part} LIMIT 2</sparql>
+  <sparql rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">kb</sparql>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?part WHERE {   ?part rdf:type kb:Motor .   kb:inventory kb:hasPart ?part} LIMIT 2</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?part WHERE {   ?part rdf:type kb:Belt .   kb:inventory kb:hasPart ?part} LIMIT 2</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">kb</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</timeToComplete>
+</Task>
+
+<Task rdf:about="#task_provide_day_camera_parts">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#inventoryManager"/>
+  <definedBy rdf:resource="#fetchParts"/>
+  <hasNextTask rdf:resource="#task_build_assembly_day_camera"/>
+  <done rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</done>
+  <name_space>kb</name_space>
+  <query>SELECT ?part WHERE {   ?part rdf:type kb:Camera .   kb:inventory kb:hasPart ?part} LIMIT 2</query>
+  <sparql rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?part WHERE {   ?part rdf:type kb:Camera .   kb:inventory kb:hasPart ?part} LIMIT 2</sparql>
+  <sparql rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">kb</sparql>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?part WHERE {   ?part rdf:type kb:Camera .   kb:inventory kb:hasPart ?part} LIMIT 2</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">kb</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</timeToComplete>
+</Task>
+
+<Task rdf:about="#task_provide_driller_arm_parts">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#inventoryManager"/>
+  <definedBy rdf:resource="#fetchParts"/>
+  <hasNextTask rdf:resource="#task_build_assembly_driller_arm"/>
+  <done rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</done>
+  <name_space>kb</name_space>
+  <query>SELECT ?part WHERE {   ?part rdf:type kb:Drill .   kb:inventory kb:hasPart ?part} LIMIT 1</query>
+  <query>SELECT ?part WHERE {   ?part rdf:type kb:Link .   kb:inventory kb:hasPart ?part} LIMIT 2</query>
+  <query>SELECT ?part WHERE {   ?part rdf:type kb:Motor .   kb:inventory kb:hasPart ?part} LIMIT 2</query>
+  <sparql rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">kb</sparql>
+  <sparql rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?part WHERE {   ?part rdf:type kb:Drill .   kb:inventory kb:hasPart ?part} LIMIT 1</sparql>
+  <sparql rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?part WHERE {   ?part rdf:type kb:Motor .   kb:inventory kb:hasPart ?part} LIMIT 2</sparql>
+  <sparql rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?part WHERE {   ?part rdf:type kb:Link .   kb:inventory kb:hasPart ?part} LIMIT 2</sparql>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">kb</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?part WHERE {   ?part rdf:type kb:Drill .   kb:inventory kb:hasPart ?part} LIMIT 1</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?part WHERE {   ?part rdf:type kb:Motor .   kb:inventory kb:hasPart ?part} LIMIT 2</task>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?part WHERE {   ?part rdf:type kb:Link .   kb:inventory kb:hasPart ?part} LIMIT 2</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</timeToComplete>
+</Task>
+
+<Task rdf:about="#task_provide_gripper_arm_parts">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#inventoryManager"/>
+  <definedBy rdf:resource="#fetchParts"/>
+  <hasTask rdf:resource="#task_build_assembly_gripper_arm"/>
+  <name_space>kb</name_space>
+  <query>SELECT ?part WHERE {   ?part rdf:type kb:Gripper .   kb:inventory kb:hasPart ?part} LIMIT 1</query>
+  <query>SELECT ?part WHERE {   ?part rdf:type kb:Link .   kb:inventory kb:hasPart ?part} LIMIT 2</query>
+  <query>SELECT ?part WHERE {   ?part rdf:type kb:Motor .   kb:inventory kb:hasPart ?part} LIMIT 3</query>
+  <sparql rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?part WHERE {   ?part rdf:type kb:Link .   kb:inventory kb:hasPart ?part} LIMIT 2</sparql>
+  <sparql rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?part WHERE {   ?part rdf:type kb:Gripper .   kb:inventory kb:hasPart ?part} LIMIT 1</sparql>
+  <sparql rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?part WHERE {   ?part rdf:type kb:Motor .   kb:inventory kb:hasPart ?part} LIMIT 3</sparql>
+  <sparql rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">kb</sparql>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?part WHERE {   ?part rdf:type kb:Link .   kb:inventory kb:hasPart ?part} LIMIT 2</task>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?part WHERE {   ?part rdf:type kb:Gripper .   kb:inventory kb:hasPart ?part} LIMIT 1</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?part WHERE {   ?part rdf:type kb:Motor .   kb:inventory kb:hasPart ?part} LIMIT 3</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">kb</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</timeToComplete>
+</Task>
+
+<Task rdf:about="#task_provide_required_bot">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assignedTo rdf:resource="#parkingLotManager"/>
+  <definedBy rdf:resource="#fetchBot"/>
+  <hasNextTask rdf:resource="#task_assign_agent_drilling"/>
+  <done rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</done>
+  <name_space>kb</name_space>
+  <query>SELECT ?bot WHERE{ ?bot kb:hasAssembly ?assembly. ?assembly kb:hasSkill ?skill. ?skill kb:canViewIn kb:Day. ?bot kb:hasAssembly ?assembly2. ?assembly2 kb:hasSkill ?skill2. ?skill2 kb:requiredBy kb:Map. ?bot kb:hasAssembly ?assembly3. ?assembly3 kb:hasSkill ?skill3. ?skill3 kb:actsOn kb:RockyTerrain. } LIMIT 1</query>
+  <sparql rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?bot WHERE{ ?bot kb:hasAssembly ?assembly. ?assembly kb:hasSkill ?skill. ?skill kb:canViewIn kb:Day. ?bot kb:hasAssembly ?assembly2. ?assembly2 kb:hasSkill ?skill2. ?skill2 kb:requiredBy kb:Map. ?bot kb:hasAssembly ?assembly3. ?assembly3 kb:hasSkill ?skill3. ?skill3 kb:actsOn kb:RockyTerrain. } LIMIT 1</sparql>
+  <sparql rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">kb</sparql>
+  <task rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">SELECT ?bot WHERE{ ?bot kb:hasAssembly ?assembly. ?assembly kb:hasSkill ?skill. ?skill kb:canViewIn kb:Day. ?bot kb:hasAssembly ?assembly2. ?assembly2 kb:hasSkill ?skill2. ?skill2 kb:requiredBy kb:Map. ?bot kb:hasAssembly ?assembly3. ?assembly3 kb:hasSkill ?skill3. ?skill3 kb:actsOn kb:RockyTerrain. } LIMIT 1</task>
+  <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">kb</task>
+  <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">1</timeToComplete>
+</Task>
+
+<BeltDrive rdf:about="#beltdrive1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assemblyOf rdf:resource="#bdbotdrillerday1"/>
+  <hasSkill rdf:resource="#BeltDriveTransportation"/>
+</BeltDrive>
+
+<DayCameraRig rdf:about="#daycamerarig1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assemblyOf rdf:resource="#bdbotdrillerday1"/>
+  <hasSkill rdf:resource="#DayVision"/>
+</DayCameraRig>
+
+<DrillerArm rdf:about="#drillerarm1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <assemblyOf rdf:resource="#bdbotdrillerday1"/>
+  <hasSkill rdf:resource="#RockyTerainExcavation"/>
+</DrillerArm>
+
+<BDBotDrillerDay rdf:about="#bdbotdrillerday1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</BDBotDrillerDay>
+
+<owl:AllDifferent>
+  <owl:distinctMembers rdf:parseType="Collection">
+    <rdf:Description rdf:about="#FlatTerrain"/>
+    <rdf:Description rdf:about="#RockyTerrain"/>
+    <rdf:Description rdf:about="#SandyTerrain"/>
+    <rdf:Description rdf:about="#WaterTerrain"/>
+  </owl:distinctMembers>
+</owl:AllDifferent>
+
+<owl:AllDifferent>
+  <owl:distinctMembers rdf:parseType="Collection">
+    <rdf:Description rdf:about="#FinDriveTransportation"/>
+    <rdf:Description rdf:about="#RockerBogieTransportation"/>
+    <rdf:Description rdf:about="#RockyTerainExcavation"/>
+  </owl:distinctMembers>
+</owl:AllDifferent>
+
+<owl:AllDifferent>
+  <owl:distinctMembers rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Day"/>
+    <rdf:Description rdf:about="#Night"/>
+  </owl:distinctMembers>
+</owl:AllDifferent>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Factory"/>
+    <rdf:Description rdf:about="#Inventory"/>
+    <rdf:Description rdf:about="#ParkingLot"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Bot"/>
+    <rdf:Description rdf:about="#Manager"/>
+    <rdf:Description rdf:about="#Orchestrator"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Belt"/>
+    <rdf:Description rdf:about="#Camera"/>
+    <rdf:Description rdf:about="#Drill"/>
+    <rdf:Description rdf:about="#Fin"/>
+    <rdf:Description rdf:about="#Gripper"/>
+    <rdf:Description rdf:about="#Link"/>
+    <rdf:Description rdf:about="#Motor"/>
+    <rdf:Description rdf:about="#Wheel"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Behavior"/>
+    <rdf:Description rdf:about="#PlanetryExplorationDomain"/>
+    <rdf:Description rdf:about="#Simulation"/>
+    <rdf:Description rdf:about="#Simulator"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#BDBot"/>
+    <rdf:Description rdf:about="#DriverBot"/>
+    <rdf:Description rdf:about="#FinBot"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Arm"/>
+    <rdf:Description rdf:about="#Drive"/>
+    <rdf:Description rdf:about="#VisionRig"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Actor"/>
+    <rdf:Description rdf:about="#Assembly"/>
+    <rdf:Description rdf:about="#Containable"/>
+    <rdf:Description rdf:about="#Executable"/>
+    <rdf:Description rdf:about="#Part"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Action"/>
+    <rdf:Description rdf:about="#Terrain"/>
+    <rdf:Description rdf:about="#TimeOfDay"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:Restriction>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasAssembly"/>
+      <owl:someValuesFrom rdf:resource="#Assembly"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <owl:onProperty rdf:resource="#hasAssembly"/>
+  <owl:someValuesFrom rdf:resource="#NightCameraRig"/>
+</owl:Restriction>
+
+<owl:Restriction>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasAssembly"/>
+      <owl:someValuesFrom rdf:resource="#Assembly"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <owl:onProperty rdf:resource="#hasAssembly"/>
+  <owl:someValuesFrom rdf:resource="#FinDrive"/>
+</owl:Restriction>
+
+<owl:Restriction>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasAssembly"/>
+      <owl:someValuesFrom rdf:resource="#Assembly"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <owl:onProperty rdf:resource="#hasAssembly"/>
+  <owl:someValuesFrom rdf:resource="#DrillerArm"/>
+</owl:Restriction>
+
+<owl:Restriction>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasAssembly"/>
+      <owl:someValuesFrom rdf:resource="#Assembly"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <owl:onProperty rdf:resource="#hasAssembly"/>
+  <owl:someValuesFrom rdf:resource="#DayCameraRig"/>
+</owl:Restriction>
+
+<owl:Restriction>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasAssembly"/>
+      <owl:someValuesFrom rdf:resource="#Assembly"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <owl:onProperty rdf:resource="#hasAssembly"/>
+  <owl:someValuesFrom rdf:resource="#BeltDrive"/>
+</owl:Restriction>
+
+<owl:Class>
+  <rdfs:subClassOf rdf:resource="#Transportation"/>
+  <owl:intersectionOf rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Skill"/>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#requiredBy"/>
+      <owl:hasValue rdf:resource="#Map"/>
+    </owl:Restriction>
+  </owl:intersectionOf>
+</owl:Class>
+
+<owl:Class>
+  <rdfs:subClassOf rdf:resource="#Skill"/>
+  <owl:intersectionOf rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Skill"/>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#requiredBy"/>
+      <owl:hasValue rdf:resource="#Map"/>
+    </owl:Restriction>
+  </owl:intersectionOf>
+</owl:Class>
+
+<owl:Class>
+  <rdfs:subClassOf rdf:resource="#FinBotNight"/>
+  <owl:intersectionOf rdf:parseType="Collection">
+    <rdf:Description rdf:about="#FinBot"/>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasAssembly"/>
+      <owl:someValuesFrom rdf:resource="#NightCameraRig"/>
+    </owl:Restriction>
+  </owl:intersectionOf>
+</owl:Class>
+
+<owl:Class>
+  <rdfs:subClassOf rdf:resource="#FinBotDay"/>
+  <owl:intersectionOf rdf:parseType="Collection">
+    <rdf:Description rdf:about="#FinBot"/>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasAssembly"/>
+      <owl:someValuesFrom rdf:resource="#DayCameraRig"/>
+    </owl:Restriction>
+  </owl:intersectionOf>
+</owl:Class>
+
+<owl:Class>
+  <rdfs:subClassOf rdf:resource="#DomainConstant"/>
+  <owl:intersectionOf rdf:parseType="Collection">
+    <rdf:Description rdf:about="#DomainConstant"/>
+    <owl:Class>
+      <owl:oneOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#RockyTerrain"/>
+        <rdf:Description rdf:about="#WaterTerrain"/>
+      </owl:oneOf>
+    </owl:Class>
+  </owl:intersectionOf>
+</owl:Class>
+
+<owl:Class>
+  <rdfs:subClassOf rdf:resource="#DomainConstant"/>
+  <owl:intersectionOf rdf:parseType="Collection">
+    <rdf:Description rdf:about="#DomainConstant"/>
+    <owl:Class>
+      <owl:oneOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Day"/>
+        <rdf:Description rdf:about="#Night"/>
+      </owl:oneOf>
+    </owl:Class>
+  </owl:intersectionOf>
+</owl:Class>
+
+<owl:Class>
+  <rdfs:subClassOf rdf:resource="#FinBot"/>
+  <owl:intersectionOf rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Bot"/>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasAssembly"/>
+      <owl:someValuesFrom rdf:resource="#FinDrive"/>
+    </owl:Restriction>
+  </owl:intersectionOf>
+</owl:Class>
+
+<owl:Class>
+  <rdfs:subClassOf rdf:resource="#BDBot"/>
+  <owl:intersectionOf rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Bot"/>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasAssembly"/>
+      <owl:someValuesFrom rdf:resource="#BeltDrive"/>
+    </owl:Restriction>
+  </owl:intersectionOf>
+</owl:Class>
+
+<owl:Class>
+  <rdfs:subClassOf rdf:resource="#BDBotNight"/>
+  <owl:intersectionOf rdf:parseType="Collection">
+    <rdf:Description rdf:about="#BDBot"/>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasAssembly"/>
+      <owl:someValuesFrom rdf:resource="#NightCameraRig"/>
+    </owl:Restriction>
+  </owl:intersectionOf>
+</owl:Class>
+
+<owl:Class>
+  <rdfs:subClassOf rdf:resource="#BDBotDay"/>
+  <owl:intersectionOf rdf:parseType="Collection">
+    <rdf:Description rdf:about="#BDBot"/>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasAssembly"/>
+      <owl:someValuesFrom rdf:resource="#DayCameraRig"/>
+    </owl:Restriction>
+  </owl:intersectionOf>
+</owl:Class>
+
+<owl:Class>
+  <rdfs:subClassOf rdf:resource="#VisionRig"/>
+  <owl:intersectionOf rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Assembly"/>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSkill"/>
+      <owl:someValuesFrom rdf:resource="#Visual"/>
+    </owl:Restriction>
+  </owl:intersectionOf>
+</owl:Class>
+
+<owl:Class>
+  <rdfs:subClassOf rdf:resource="#Assembly"/>
+  <owl:intersectionOf rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Assembly"/>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSkill"/>
+      <owl:someValuesFrom rdf:resource="#Visual"/>
+    </owl:Restriction>
+  </owl:intersectionOf>
+</owl:Class>
+
+<owl:Class>
+  <rdfs:subClassOf rdf:resource="#Drive"/>
+  <owl:intersectionOf rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Assembly"/>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSkill"/>
+      <owl:someValuesFrom rdf:resource="#Transportation"/>
+    </owl:Restriction>
+  </owl:intersectionOf>
+</owl:Class>
+
+<owl:Class>
+  <rdfs:subClassOf rdf:resource="#Assembly"/>
+  <owl:intersectionOf rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Assembly"/>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSkill"/>
+      <owl:someValuesFrom rdf:resource="#Transportation"/>
+    </owl:Restriction>
+  </owl:intersectionOf>
+</owl:Class>
+
+
+</rdf:RDF>
