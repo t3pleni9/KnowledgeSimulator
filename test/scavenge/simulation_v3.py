@@ -48,7 +48,7 @@ def create_bot(factory_manager, task, simulator=None, *args, **kwargs):
         assembly.assemblyOf = bot
 
     simulator.sync_reasoner()
-
+    simulator.agents.put(bot)
     for next_tasks in task.hasNextTask:
         next_tasks.entity = bot
     task.done = True

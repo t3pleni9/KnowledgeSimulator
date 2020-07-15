@@ -1858,19 +1858,19 @@
 <Belt rdf:about="#belt1">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <partOf rdf:resource="#beltdrive1"/>
-  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">50</life>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</life>
 </Belt>
 
 <Belt rdf:about="#belt2">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <partOf rdf:resource="#beltdrive1"/>
-  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">50</life>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</life>
 </Belt>
 
 <Camera rdf:about="#camera1">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <partOf rdf:resource="#daycamerarig1"/>
-  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">100</life>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">90</life>
 </Camera>
 
 <Behavior rdf:about="#createAssembly">
@@ -1898,7 +1898,7 @@
 <Drill rdf:about="#drill1">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <partOf rdf:resource="#drillerarm1"/>
-  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">10</life>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</life>
 </Drill>
 
 <Behavior rdf:about="#execute">
@@ -1968,13 +1968,13 @@
 <Link rdf:about="#link1">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <partOf rdf:resource="#drillerarm1"/>
-  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">100</life>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">90</life>
 </Link>
 
 <Link rdf:about="#link2">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <partOf rdf:resource="#drillerarm1"/>
-  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">100</life>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">90</life>
 </Link>
 
 <Link rdf:about="#link3">
@@ -2020,25 +2020,25 @@
 <Motor rdf:about="#motor1">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <partOf rdf:resource="#beltdrive1"/>
-  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">50</life>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</life>
 </Motor>
 
 <Motor rdf:about="#motor2">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <partOf rdf:resource="#beltdrive1"/>
-  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">50</life>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</life>
 </Motor>
 
 <Motor rdf:about="#motor3">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <partOf rdf:resource="#drillerarm1"/>
-  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">50</life>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</life>
 </Motor>
 
 <Motor rdf:about="#motor4">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <partOf rdf:resource="#drillerarm1"/>
-  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">50</life>
+  <life rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</life>
 </Motor>
 
 <Motor rdf:about="#motor5">
@@ -2198,6 +2198,7 @@
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <assignedTo rdf:resource="#parkingLotManager"/>
   <definedBy rdf:resource="#addToParkingLot"/>
+  <done rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</done>
   <params>isAvailableIn</params>
   <task rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</task>
   <task rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">isAvailableIn</task>
@@ -2279,6 +2280,7 @@
   <assignedTo rdf:resource="#bdbotdrillerday1"/>
   <definedBy rdf:resource="#performTask"/>
   <hasNextTask rdf:resource="#task_agent_return_to_parking_lot"/>
+  <done rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</done>
   <task rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">10</task>
   <timeToComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">10</timeToComplete>
 </Task>
@@ -2419,6 +2421,7 @@
 
 <BDBotDrillerDay rdf:about="#bdbotdrillerday1">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <isAvailableIn rdf:resource="#parkingLot"/>
 </BDBotDrillerDay>
 
 <owl:AllDifferent>
