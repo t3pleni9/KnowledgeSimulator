@@ -137,20 +137,19 @@ def inventory_manager_perform(actor, task, *args, **kwargs):
     return [State(task.definedBy, task.assignedTo, task)]
 
 @Simulator.behavior('api://collab_bot/behavior/allocate_to_agent')
-def allocate_to_agent(parking_lot_manager, task, simulator=None, *args, **kwargs):
-    dependent_tasks = task.hasPreviousTask
-    if not all(dep_task.done for dep_task in dependent_tasks):
-        return State.WAIT
-    
-    if task.done:
-        return State.NILL
-    
+def allocate_to_agent(parking_lot_manager, task, simulator=None, *args, **kwargs):    
     behavior = kwargs['behavior']
     queries = task.query
     namespace = task.name_space
-    print(queries)
+    
     query_result = [simulator.reasoner.run_query(query, namespace) for query in queries]
-    bot = [result[0] for results in query_result for result in results][0]
+    
+    bots = [result[0] for results in query_result for result in results]
+
+    if bots == []:
+        return State.WAIT
+
+    bot = bots[0]
     
     for next_tasks in task.hasNextTask:
         next_tasks.assignedTo = bot
@@ -189,10 +188,6 @@ def perform(actor, executable, *args, **kwargs):
     return agent_perform[agent_type](actor, executable)
 
 def mother_ship_execute(agent, mission):
-    dependent_executable = mission.dependsOn
-    if not all(dep_task.done for dep_task in dependent_executable):
-        return State.WAIT
-
     mission.done = True
     return get_next_tasks(mission)
 

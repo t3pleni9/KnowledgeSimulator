@@ -496,6 +496,9 @@
         <NamedIndividual IRI="#mission_perform_exploration"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#mission_perform_exploration_2"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#motor1"/>
     </Declaration>
     <Declaration>
@@ -563,6 +566,9 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#task_perform_exploration"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#task_perform_exploration_2"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#task_provide_bd_bot_assemblies"/>
@@ -2240,6 +2246,10 @@
         <NamedIndividual IRI="#mission_perform_exploration"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#Mission"/>
+        <NamedIndividual IRI="#mission_perform_exploration_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class IRI="#Motor"/>
         <NamedIndividual IRI="#motor1"/>
     </ClassAssertion>
@@ -2314,6 +2324,10 @@
     <ClassAssertion>
         <Class IRI="#Task"/>
         <NamedIndividual IRI="#task_perform_exploration"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Task"/>
+        <NamedIndividual IRI="#task_perform_exploration_2"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Task"/>
@@ -2504,14 +2518,24 @@
         <NamedIndividual IRI="#execute"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#dependsOn"/>
-        <NamedIndividual IRI="#mission_perform_exploration"/>
-        <NamedIndividual IRI="#task_add_bd_bot_to_parking_lot"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#hasNextTask"/>
         <NamedIndividual IRI="#mission_perform_exploration"/>
         <NamedIndividual IRI="#task_assign_exploration_to_agent"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#assignedTo"/>
+        <NamedIndividual IRI="#mission_perform_exploration_2"/>
+        <NamedIndividual IRI="#landerMissionControl"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#definedBy"/>
+        <NamedIndividual IRI="#mission_perform_exploration_2"/>
+        <NamedIndividual IRI="#execute"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasNextTask"/>
+        <NamedIndividual IRI="#mission_perform_exploration_2"/>
+        <NamedIndividual IRI="#task_assign_exploration_2_to_agent"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#partOf"/>
@@ -2552,6 +2576,11 @@
         <ObjectProperty IRI="#hasMissions"/>
         <NamedIndividual IRI="#simulation_perfomr_exploration"/>
         <NamedIndividual IRI="#mission_perform_exploration"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasMissions"/>
+        <NamedIndividual IRI="#simulation_perfomr_exploration"/>
+        <NamedIndividual IRI="#mission_perform_exploration_2"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#simulates"/>
@@ -2611,7 +2640,7 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#hasNextTask"/>
         <NamedIndividual IRI="#task_assign_exploration_2_to_agent"/>
-        <NamedIndividual IRI="#task_perform_exploration"/>
+        <NamedIndividual IRI="#task_perform_exploration_2"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#assignedTo"/>
@@ -2637,11 +2666,6 @@
         <ObjectProperty IRI="#definedBy"/>
         <NamedIndividual IRI="#task_beam_back_agents"/>
         <NamedIndividual IRI="#addToParkingLot"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasNextTask"/>
-        <NamedIndividual IRI="#task_beam_back_agents"/>
-        <NamedIndividual IRI="#task_assign_exploration_2_to_agent"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#assignedTo"/>
@@ -2691,6 +2715,11 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#hasNextTask"/>
         <NamedIndividual IRI="#task_perform_exploration"/>
+        <NamedIndividual IRI="#task_beam_back_agents"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasNextTask"/>
+        <NamedIndividual IRI="#task_perform_exploration_2"/>
         <NamedIndividual IRI="#task_beam_back_agents"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
@@ -2854,6 +2883,11 @@
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">2</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="#timeToComplete"/>
+        <NamedIndividual IRI="#mission_perform_exploration_2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="#life"/>
         <NamedIndividual IRI="#motor1"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">10</Literal>
@@ -2946,12 +2980,12 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#query"/>
         <NamedIndividual IRI="#task_assign_exploration_2_to_agent"/>
-        <Literal>SELECT ?bot WHERE { ?assembly kb:assemblyOf ?bot. ?assembly kb:hasSkill ?skill. ?skill kb:requiredBy kb:Map; kb:actsOn  kb:RockyTerrain. ?bot kb:isAvailableIn kb:parkingLot.}</Literal>
+        <Literal>SELECT ?bot WHERE { ?assembly kb:assemblyOf ?bot. ?assembly kb:hasSkill ?skill. ?skill kb:requiredBy kb:Map; kb:actsOn  kb:RockyTerrain. ?bot kb:isAvailableIn kb:parkingLot. FILTER ( !EXISTS { ?bot a kb:BadBot})}</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#timeToComplete"/>
         <NamedIndividual IRI="#task_assign_exploration_2_to_agent"/>
-        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">2</Literal>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">4</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#name_space"/>
@@ -2961,7 +2995,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#query"/>
         <NamedIndividual IRI="#task_assign_exploration_to_agent"/>
-        <Literal>SELECT ?bot WHERE { ?assembly kb:assemblyOf ?bot. ?assembly kb:hasSkill ?skill. ?skill kb:requiredBy kb:Map; kb:actsOn  kb:RockyTerrain. ?bot kb:isAvailableIn kb:parkingLot. }</Literal>
+        <Literal>SELECT ?bot WHERE { ?assembly kb:assemblyOf ?bot. ?assembly kb:hasSkill ?skill. ?skill kb:requiredBy kb:Map; kb:actsOn  kb:RockyTerrain. ?bot kb:isAvailableIn kb:parkingLot. FILTER ( !EXISTS { ?bot a kb:BadBot})}</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#timeToComplete"/>
@@ -3012,6 +3046,11 @@
         <DataProperty IRI="#timeToComplete"/>
         <NamedIndividual IRI="#task_perform_exploration"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeToComplete"/>
+        <NamedIndividual IRI="#task_perform_exploration_2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">15</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#name_space"/>
