@@ -19,6 +19,21 @@ def add_to_containable(manager, task, simulator=None, *args, **kwargs):
         triggeredState = [State(behavior.triggers, manager, task, 2)]
     return triggeredState +  get_next_tasks(task)
 
+
+@Simulator.behavior('api://collab_bot/behavior/addScavengedToInventory')
+def add_scavenged_to_inventory(inventory_manager, task, simulator=None, *args, **kwargs):
+    
+    ontology = simulator.ontology
+    entities = task.entities
+
+    for entity in entities:
+        setattr(entity, task.params, inventory_manager.manages[0])
+    
+    simulator.sync_reasoner()
+    task.done = True
+    return get_next_tasks(task)
+
+
 @Simulator.behavior('api://collab_bot/behavior/createAssembly')
 def create_assembly(factory_manager, task, simulator=None, *args, **kwargs):
     ontology = simulator.ontology
@@ -48,6 +63,7 @@ def create_bot(factory_manager, task, simulator=None, *args, **kwargs):
         assembly.assemblyOf = bot
 
     simulator.sync_reasoner()
+    simulator.agents.put(bot)
 
     for next_tasks in task.hasNextTask:
         next_tasks.entity = bot
@@ -135,6 +151,37 @@ def perform_allocated_task(agent, task, simulator=None, *args, **kwargs):
     
     return get_next_tasks(task)
 
+@Simulator.behavior('api://collab_bot/behavior/diagnose_health')
+def diagnose_health(parking_lot_manager, task, simulator=None, *args, **kwargs):
+    entity = task.entity
+    ontology = simulator.ontology
+    if ontology.BadBot in entity.is_a:
+        behavior = kwargs['behavior']
+        #print(ontology.task_scavenge_damaged_agent)
+        ontology.task_scavenge_damaged_agent_assembly.entity = entity
+        ontology.task_scavenge_damaged_agent_part.entity = entity
+        task.hasNextTask = [ontology.task_scavenge_damaged_agent_assembly, ontology.task_scavenge_damaged_agent_part]
+        return get_next_tasks(task)
+        #return [State(behavior.triggers, task.assignedTo, task)]
+        
+    return []
+
+@Simulator.behavior('api://collab_bot/behavior/scavenge_bot')
+def scavenge_bot(parking_lot_manager, task, simulator=None, *args, **kwargs):
+    entity = task.entity
+    onto = simulator.ontology
+
+    queries = task.query
+    namespace = task.name_space
+    query_result = [simulator.reasoner.run_query(query, namespace) for query in queries]
+    good_items = [result[0] for results in query_result for result in results]
+
+    next_task = task.hasNextTask[0]
+    next_task.entities = good_items
+
+    return get_next_tasks(task)
+  
+
 def factory_manager_perform(actor, task, *args, **kwargs):
     return [State(task.definedBy, task.assignedTo, task)]
 
@@ -174,7 +221,7 @@ def simulate(simulator_agent,  *args, **kwargs):
 
 def main():
     Simulator.init(
-        ontology_uri="./kb_owl_v3.owl",
+        ontology_uri="./kb_owl.owl",
         agent_class="Actor",
         behavior_class="Behavior",
         uri_property="uri",
@@ -184,6 +231,7 @@ def main():
     
     Simulator.run(until = 100)
     simulator = Simulator.get_instance()
+    print("Simulation done.....")
     oo = simulator.ontology
     oo.save('./temp2.owl')
 

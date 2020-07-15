@@ -33,6 +33,8 @@ class State:
             yield simulator.env.timeout(self.timeout)
             simulator.agents.put(agent)
             print(f"{now} Simulating  {self.agent.name} {self.behavior.name} {self.args} {self.timeout} secs" )
+            with open("log.csv", "a+") as f:
+                f.write(f"{now},{self.agent.name},{self.behavior.name},{self.args},{self.timeout}\n")
         
         for state in next_state:
             simulator.env.process(perform_task(state, simulator))

@@ -457,6 +457,9 @@
         <NamedIndividual IRI="#WaterTerrain"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#addScavengedToInventory"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#addToInventory"/>
     </Declaration>
     <Declaration>
@@ -586,6 +589,9 @@
         <NamedIndividual IRI="#returnToBase"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#scavengeBot"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#simulate"/>
     </Declaration>
     <Declaration>
@@ -614,6 +620,12 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#task_add_gripper_arm_to_inventory"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#task_add_scavenged_assemblies_to_inventory"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#task_add_scavenged_parts_to_inventory"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#task_agent_return_to_parking_lot"/>
@@ -656,6 +668,12 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#task_provide_required_bot"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#task_scavenge_damaged_agent_assembly"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#task_scavenge_damaged_agent_part"/>
     </Declaration>
     <Declaration>
         <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
@@ -749,6 +767,16 @@
                 <ObjectProperty IRI="#hasAssembly"/>
                 <Class IRI="#BadAssembly"/>
             </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#BadPart"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Part"/>
+            <DataHasValue>
+                <DataProperty IRI="#life"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+            </DataHasValue>
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
@@ -2234,6 +2262,10 @@
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Behavior"/>
+        <NamedIndividual IRI="#addScavengedToInventory"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Behavior"/>
         <NamedIndividual IRI="#addToInventory"/>
     </ClassAssertion>
     <ClassAssertion>
@@ -2406,6 +2438,10 @@
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Behavior"/>
+        <NamedIndividual IRI="#scavengeBot"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Behavior"/>
         <NamedIndividual IRI="#simulate"/>
     </ClassAssertion>
     <ClassAssertion>
@@ -2439,6 +2475,14 @@
     <ClassAssertion>
         <Class IRI="#Task"/>
         <NamedIndividual IRI="#task_add_gripper_arm_to_inventory"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Task"/>
+        <NamedIndividual IRI="#task_add_scavenged_assemblies_to_inventory"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Task"/>
+        <NamedIndividual IRI="#task_add_scavenged_parts_to_inventory"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Task"/>
@@ -2479,6 +2523,14 @@
     <ClassAssertion>
         <Class IRI="#Task"/>
         <NamedIndividual IRI="#task_provide_required_bot"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Task"/>
+        <NamedIndividual IRI="#task_scavenge_damaged_agent_assembly"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Task"/>
+        <NamedIndividual IRI="#task_scavenge_damaged_agent_part"/>
     </ClassAssertion>
     <DifferentIndividuals>
         <NamedIndividual IRI="#Day"/>
@@ -2629,6 +2681,11 @@
         <ObjectProperty IRI="#triggers"/>
         <NamedIndividual IRI="#createBot"/>
         <NamedIndividual IRI="#addToParkingLot"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#triggers"/>
+        <NamedIndividual IRI="#diagnose_health"/>
+        <NamedIndividual IRI="#scavengeBot"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#partOf"/>
@@ -2882,6 +2939,26 @@
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#assignedTo"/>
+        <NamedIndividual IRI="#task_add_scavenged_assemblies_to_inventory"/>
+        <NamedIndividual IRI="#inventoryManager"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#definedBy"/>
+        <NamedIndividual IRI="#task_add_scavenged_assemblies_to_inventory"/>
+        <NamedIndividual IRI="#addScavengedToInventory"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#assignedTo"/>
+        <NamedIndividual IRI="#task_add_scavenged_parts_to_inventory"/>
+        <NamedIndividual IRI="#inventoryManager"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#definedBy"/>
+        <NamedIndividual IRI="#task_add_scavenged_parts_to_inventory"/>
+        <NamedIndividual IRI="#addScavengedToInventory"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#assignedTo"/>
         <NamedIndividual IRI="#task_agent_return_to_parking_lot"/>
         <NamedIndividual IRI="#parkingLotManager"/>
     </ObjectPropertyAssertion>
@@ -3070,6 +3147,46 @@
         <NamedIndividual IRI="#task_provide_required_bot"/>
         <NamedIndividual IRI="#task_assign_agent_drilling"/>
     </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#assignedTo"/>
+        <NamedIndividual IRI="#task_scavenge_damaged_agent_assembly"/>
+        <NamedIndividual IRI="#parkingLotManager"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#definedBy"/>
+        <NamedIndividual IRI="#task_scavenge_damaged_agent_assembly"/>
+        <NamedIndividual IRI="#scavengeBot"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasNextTask"/>
+        <NamedIndividual IRI="#task_scavenge_damaged_agent_assembly"/>
+        <NamedIndividual IRI="#task_add_scavenged_assemblies_to_inventory"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#assignedTo"/>
+        <NamedIndividual IRI="#task_scavenge_damaged_agent_part"/>
+        <NamedIndividual IRI="#parkingLotManager"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#definedBy"/>
+        <NamedIndividual IRI="#task_scavenge_damaged_agent_part"/>
+        <NamedIndividual IRI="#scavengeBot"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasNextTask"/>
+        <NamedIndividual IRI="#task_scavenge_damaged_agent_part"/>
+        <NamedIndividual IRI="#task_add_scavenged_parts_to_inventory"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#type"/>
+        <NamedIndividual IRI="#addScavengedToInventory"/>
+        <Literal>api</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#uri"/>
+        <NamedIndividual IRI="#addScavengedToInventory"/>
+        <Literal>api://collab_bot/behavior/addScavengedToInventory</Literal>
+    </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
         <NamedIndividual IRI="#addToInventory"/>
@@ -3144,6 +3261,16 @@
         <DataProperty IRI="#uri"/>
         <NamedIndividual IRI="#createBot"/>
         <Literal>api://collab_bot/behavior/createBot</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#type"/>
+        <NamedIndividual IRI="#diagnose_health"/>
+        <Literal>api</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#uri"/>
+        <NamedIndividual IRI="#diagnose_health"/>
+        <Literal>api://collab_bot/behavior/diagnose_health</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#life"/>
@@ -3302,6 +3429,16 @@
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#type"/>
+        <NamedIndividual IRI="#scavengeBot"/>
+        <Literal>api</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#uri"/>
+        <NamedIndividual IRI="#scavengeBot"/>
+        <Literal>api://collab_bot/behavior/scavenge_bot</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#type"/>
         <NamedIndividual IRI="#simulate"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#token">api</Literal>
     </DataPropertyAssertion>
@@ -3358,6 +3495,26 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#timeToComplete"/>
         <NamedIndividual IRI="#task_add_gripper_arm_to_inventory"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#params"/>
+        <NamedIndividual IRI="#task_add_scavenged_assemblies_to_inventory"/>
+        <Literal>assemblyOf</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeToComplete"/>
+        <NamedIndividual IRI="#task_add_scavenged_assemblies_to_inventory"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#params"/>
+        <NamedIndividual IRI="#task_add_scavenged_parts_to_inventory"/>
+        <Literal>partOf</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeToComplete"/>
+        <NamedIndividual IRI="#task_add_scavenged_parts_to_inventory"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">1</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
@@ -3559,6 +3716,36 @@
         <DataProperty IRI="#timeToComplete"/>
         <NamedIndividual IRI="#task_provide_required_bot"/>
         <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#name_space"/>
+        <NamedIndividual IRI="#task_scavenge_damaged_agent_assembly"/>
+        <Literal>kb</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#query"/>
+        <NamedIndividual IRI="#task_scavenge_damaged_agent_assembly"/>
+        <Literal>SELECT ?assembly WHERE { ?bot a kb:BadBot. ?assembly kb:assemblyOf ?bot. FILTER ( !EXISTS { ?assembly a kb:BadAssembly} ) }</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeToComplete"/>
+        <NamedIndividual IRI="#task_scavenge_damaged_agent_assembly"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#name_space"/>
+        <NamedIndividual IRI="#task_scavenge_damaged_agent_part"/>
+        <Literal>kb</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#query"/>
+        <NamedIndividual IRI="#task_scavenge_damaged_agent_part"/>
+        <Literal>SELECT ?part WHERE { ?bot a kb:BadBot. ?assembly kb:assemblyOf ?bot; a kb:BadAssembly. ?part kb:partOf ?assembly. FILTER ( !EXISTS { ?part a kb:BadPart } ) }</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#timeToComplete"/>
+        <NamedIndividual IRI="#task_scavenge_damaged_agent_part"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#unsignedInt">3</Literal>
     </DataPropertyAssertion>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#createsAssembly"/>
