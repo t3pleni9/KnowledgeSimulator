@@ -1,7 +1,7 @@
 from knowledge_sim import Simulator, State
 
 def get_next_tasks(task):
-    return [State(next_task.definedBy, next_task.assignedTo, next_task, next_task.timeToComplete) for next_task in list(task.hasNextTask)]
+    return [State(next_task.definedBy, next_task.assignedTo, next_task, next_task.time_to_complete) for next_task in list(task.hasNextTask)]
 
 @Simulator.behavior('api://collab_bot/behavior/addToContainable')
 def add_to_containable(manager, task, simulator=None, *args, **kwargs):
@@ -170,8 +170,8 @@ def perform_task(agent, task, simulator=None, *args, **kwargs):
     agent.isAvailableIn = None
     for assembly in agent.hasAssembly:
         for part in assembly.hasPart:
-            new_life = part.life - task.timeToComplete
-            part.life = new_life if new_life > 0 else 0
+            new_life = part.part_life - task.time_to_complete
+            part.part_life = new_life if new_life > 0 else 0
 
     for next_tasks in task.hasNextTask:
         next_tasks.entity = agent
@@ -207,7 +207,7 @@ def execute(actor, executable, *args, **kwargs):
 
 @Simulator.behavior('api://collab_bot/behavior/assignExecutable')    
 def assignExecutable(simulator_agent, simulation, *args, **kwargs):
-    return [State(mission.definedBy, mission.assignedTo, mission, mission.timeToComplete) for mission in list(simulation.hasMissions)]
+    return [State(mission.definedBy, mission.assignedTo, mission, mission.time_to_complete) for mission in list(simulation.hasMissions)]
     
 @Simulator.behavior('api://collab_bot/behavior/simulate')
 def simulate(simulator_agent,  *args, **kwargs):
@@ -217,7 +217,7 @@ def simulate(simulator_agent,  *args, **kwargs):
 def main():
     Simulator.init(
         ontology_uri="./kb_owl.owl",
-        agent_class="Actor",
+        agent_class="Agent",
         behavior_class="Behavior",
         uri_property="uri",
         simulator="simulator",
