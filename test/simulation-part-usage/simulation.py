@@ -98,7 +98,7 @@ def repair_bot(parking_lot_manager, task, simulator=None, *args, **kwargs):
     return get_next_tasks(task)
 
 @Simulator.behavior('api://collab_bot/behavior/fetchAssemblies')    
-def fetchAssemblies(inventoryManager, task, simulator=None, *args, **kwargs):
+def fetchAssemblies(manager, task, simulator=None, *args, **kwargs):
     dependent_tasks = task.hasPreviousTask
     if not all(dep_task.done for dep_task in dependent_tasks):
         return State.WAIT
@@ -108,8 +108,13 @@ def fetchAssemblies(inventoryManager, task, simulator=None, *args, **kwargs):
     
     queries = task.query
     namespace = task.name_space
-    query_result = [simulator.reasoner.run_query(query, namespace) for query in queries]
-    assemblies = [result[0] for results in query_result for result in results]
+    query_result = [
+        simulator.reasoner.run_query(query, namespace) 
+        for query in queries
+    ]
+    assemblies = [
+        result[0] for results in query_result for result in results
+    ]
     
     for next_tasks in task.hasNextTask:
         next_tasks.assemblies = assemblies
