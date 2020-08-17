@@ -27,12 +27,13 @@ class State:
             simulator.agents.put(agent)
             yield simulator.env.timeout(self.timeout)
             next_state = [self]
-            print(f"{now} Waiting {self.agent.name} {self.behavior.name} {self.args}" )
+            print(f"{now}\tWaiting\t{self.agent.name}\t{self.behavior.name}\t{self.args}" )
 
         else:
             yield simulator.env.timeout(self.timeout)
             simulator.agents.put(agent)
-            print(f"{now} Simulating  {self.agent.name} {self.behavior.name} {self.args} {self.timeout} secs" )
+
+            print(f"{now}\tSimulating\t{self.agent.name}\t{self.behavior.name}\t{self.args}\t{self.timeout} tics" )
             with open("log.csv", "a+") as f:
                 f.write(f"{now},{self.agent.name},{self.behavior.name},{self.args},{self.timeout}\n")
         
