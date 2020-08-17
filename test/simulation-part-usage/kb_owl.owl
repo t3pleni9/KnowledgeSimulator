@@ -1767,7 +1767,6 @@
         <Class IRI="#Assembly"/>
         <Class IRI="#Containable"/>
         <Class IRI="#Executable"/>
-        <Class IRI="#Part"/>
     </DisjointClasses>
     <DisjointClasses>
         <Class IRI="#Arm"/>

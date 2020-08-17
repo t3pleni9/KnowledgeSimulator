@@ -222,6 +222,7 @@ def main():
     Simulator.run(until = 100)
     simulator = Simulator.get_instance()
     oo = simulator.ontology
+    print(type(simulator.ontology))
     oo.save('./output.owl')
     print("Simulation Done...")
 
