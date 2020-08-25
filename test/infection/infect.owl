@@ -1,0 +1,683 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#"
+     xml:base="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:infection="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#assignedTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#assignedTo">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Executable"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Simulator"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#contacts -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#contacts">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#currentlyHas -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#currentlyHas">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#currentlyIn"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Buildings"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Transportation"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#currentlyIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#currentlyIn">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Buildings"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Transportation"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#definedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#definedBy">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Executable"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Behavior"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#hasBehavior -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#hasBehavior">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Behavior"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#hasNextTask -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#hasNextTask">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Executable"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Executable"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#hasTask -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#hasTask">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Simulation"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Executable"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#healthState -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#healthState">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#InfectionState"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#occupation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#occupation">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#simulates -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#simulates">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Simulator"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Simulation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#staysAt -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#staysAt">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#House"/>
+        <owl:propertyDisjointWith rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#worksAt"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#triggers -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#triggers">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Behavior"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Behavior"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#worksAt -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#worksAt">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Office"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#behavior -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#behavior"/>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen"/>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#params -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#params">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#task"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#survivebility -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#survivebility">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#task -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#task"/>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#time_to_complete -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#time_to_complete">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#task"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedInt"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#type -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#type">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#behavior"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#token"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#uri -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#uri">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#behavior"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Behavior -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Behavior">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#EpiDomain"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Buildings -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Buildings">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#EpiDomain"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#EpiDomain"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Employed -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Employed">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#EpiDomain -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#EpiDomain"/>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Executable -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Executable">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#EpiDomain"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#House -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#House">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Buildings"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#InfectionState -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#InfectionState">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#deceased"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#infected"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#recovered"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#susceptible"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#EpiDomain"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Office -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Office">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Buildings"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Simulation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Simulation"/>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Simulator -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Simulator"/>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Transportation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Transportation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#EpiDomain"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#checkHealth -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#checkHealth">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Behavior"/>
+        <type rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</type>
+        <uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">api://epi_sim/behavior/checkHealth</uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen"/>
+        <staysAt rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#house1"/>
+        <worksAt rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#office1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen10 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen10">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen"/>
+        <staysAt rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#house1"/>
+        <worksAt rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#office2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen"/>
+        <staysAt rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#house2"/>
+        <worksAt rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#office1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen"/>
+        <staysAt rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#house2"/>
+        <worksAt rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#office2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen"/>
+        <staysAt rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#house3"/>
+        <worksAt rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#office1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen"/>
+        <staysAt rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#house3"/>
+        <worksAt rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#office2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen"/>
+        <staysAt rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#house4"/>
+        <worksAt rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#office1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen"/>
+        <staysAt rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#house4"/>
+        <worksAt rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#office2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen8">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen"/>
+        <staysAt rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#house5"/>
+        <worksAt rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#office1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#citizen9">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Citizen"/>
+        <staysAt rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#house5"/>
+        <worksAt rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#office2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#deceased -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#deceased"/>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#goToHome -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#goToHome">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Behavior"/>
+        <triggers rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#infectContacts"/>
+        <type rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</type>
+        <uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">api://epi_sim/behavior/goToHome</uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#goToWork -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#goToWork">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Behavior"/>
+        <triggers rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#infectContacts"/>
+        <type rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</type>
+        <uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">api://epi_sim/behavior/goToWork</uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#house1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#house1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#House"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#house2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#house2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#House"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#house3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#house3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#House"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#house4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#house4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#House"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#house5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#house5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#House"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#infectContacts -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#infectContacts">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Behavior"/>
+        <triggers rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#checkHealth"/>
+        <type rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</type>
+        <uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">api://epi_sim/behavior/infectSomeContacts</uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#infected -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#infected"/>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#initializeSimulation -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#initializeSimulation">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Behavior"/>
+        <type rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</type>
+        <uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">api://epi_sim/behavior/initializeSimulation</uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#office1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#office1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Buildings"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#office2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#office2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Buildings"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#recovered -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#recovered"/>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#simulate -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#simulate">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Behavior"/>
+        <type rdf:datatype="http://www.w3.org/2001/XMLSchema#token">api</type>
+        <uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">api://epi_sim/behavior/simulate</uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#simulateInfectionSpread -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#simulateInfectionSpread">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Simulation"/>
+        <hasTask rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#task_initialize_simulation"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#simulator -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#simulator">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Simulator"/>
+        <hasBehavior rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#simulate"/>
+        <simulates rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#simulateInfectionSpread"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#susceptible -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#susceptible"/>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#task_go_to_home -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#task_go_to_home">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Executable"/>
+        <definedBy rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#goToHome"/>
+        <hasNextTask rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#task_go_to_work"/>
+        <params rdf:datatype="http://www.w3.org/2001/XMLSchema#string">currentlyIn</params>
+        <time_to_complete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">14</time_to_complete>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#task_go_to_work -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#task_go_to_work">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Executable"/>
+        <definedBy rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#goToWork"/>
+        <hasNextTask rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#task_go_to_home"/>
+        <params rdf:datatype="http://www.w3.org/2001/XMLSchema#string">currentlyIn</params>
+        <time_to_complete rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">6</time_to_complete>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#task_initialize_simulation -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#task_initialize_simulation">
+        <rdf:type rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#Executable"/>
+        <assignedTo rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#simulator"/>
+        <definedBy rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#initializeSimulation"/>
+        <hasNextTask rdf:resource="http://www.semanticweb.org/in-justin.jose/ontologies/2020/6/infection#task_go_to_work"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
