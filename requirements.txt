@@ -5,4 +5,4 @@ mock==2.0.0
 simpy==3.0.12
 requests==2.23.0
 rdflib==5.0.0
-Flask==1.1.2
+Flask==2.3.2
